@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../UiHelper/colorPalette/color_palette.dart';
+
+import '../../../UiHelper/colorPalette/color_palette.dart';
+
+
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
