@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainer/Features/AuthenticationScreens/LoginScreen/login_screen.dart';
 import 'package:trainer/Features/OnboardingScreens/introProvider/widgets/alert_box_widget.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
@@ -50,7 +51,15 @@ class IntroScreen extends StatelessWidget {
           Column(
             spacing: 20,
             children: [
-              CustomPrimaryButton(btnName: "Sign In", onTap: () {}),
+              CustomPrimaryButton(
+                btnName: "Sign In",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                },
+              ),
               CustomPrimaryButton(
                 btnName: "Create new account",
                 secondary: true,
