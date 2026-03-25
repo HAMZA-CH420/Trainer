@@ -68,7 +68,10 @@ class IntroScreen extends StatelessWidget {
     return showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(title: AlertBoxWidget());
+        return AlertDialog(
+          title: Text("Join us as"),
+          actions: [AlertBoxWidget()],
+        );
       },
     );
   }

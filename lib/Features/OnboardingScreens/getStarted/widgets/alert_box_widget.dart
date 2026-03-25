@@ -15,7 +15,7 @@ class _AlertBoxWidgetState extends State<AlertBoxWidget> {
   @override
   Widget build(BuildContext context) {
     List<String> content = ["TRAINER", "TRAINEE"];
-
+    final size = MediaQuery.sizeOf(context);
     return Wrap(
       children: List.generate(content.length, (index) {
         bool isSelected = selectedIndex == index;
@@ -23,10 +23,11 @@ class _AlertBoxWidgetState extends State<AlertBoxWidget> {
           onTap: () {
             setState(() {
               selectedIndex = index;
-              print(index);
             });
           },
           child: Container(
+            height: size.height / 12,
+            margin: EdgeInsets.symmetric(vertical: 5),
             decoration: BoxDecoration(
               color: isSelected ? Palette.primaryColor : Colors.white,
               borderRadius: BorderRadius.circular(5),
@@ -37,6 +38,7 @@ class _AlertBoxWidgetState extends State<AlertBoxWidget> {
               content[index],
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w500,
+                fontSize: 16,
                 color: isSelected ? Colors.white : Palette.primaryColor,
               ),
             ),
