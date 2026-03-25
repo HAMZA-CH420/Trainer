@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trainer/Features/OnboardingScreens/getStarted/widgets/alert_box_widget.dart';
+import 'package:trainer/Features/OnboardingScreens/introProvider/widgets/alert_box_widget.dart';
+import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
 import '../../../UiHelper/utilities/widgets/custom_primary_button.dart';
 
@@ -65,11 +66,24 @@ class IntroScreen extends StatelessWidget {
   }
 
   Future dialogueBox(BuildContext context) async {
+    final size = MediaQuery.sizeOf(context);
     return showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Join us as"),
+          title: SizedBox(
+            width: size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Join us as"),
+                IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(Icons.cancel, color: Palette.primaryColor),
+                ),
+              ],
+            ),
+          ),
           actions: [AlertBoxWidget()],
         );
       },
