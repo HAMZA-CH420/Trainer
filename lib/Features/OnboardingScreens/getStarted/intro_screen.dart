@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainer/Features/OnboardingScreens/getStarted/widgets/alert_box_widget.dart';
 
 import '../../../UiHelper/utilities/widgets/custom_primary_button.dart';
 
@@ -23,7 +24,7 @@ class IntroScreen extends StatelessWidget {
             ),
           ),
           Column(
-            spacing: 10,
+            spacing: 15,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
@@ -44,7 +45,7 @@ class IntroScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: size.height / 16),
+          SizedBox(height: size.height / 18),
           Column(
             spacing: 20,
             children: [
@@ -52,12 +53,23 @@ class IntroScreen extends StatelessWidget {
               CustomPrimaryButton(
                 btnName: "Create new account",
                 secondary: true,
-                onTap: () {},
+                onTap: () {
+                  dialogueBox(context);
+                },
               ),
             ],
           ),
         ],
       ),
+    );
+  }
+
+  Future dialogueBox(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(title: AlertBoxWidget());
+      },
     );
   }
 }
