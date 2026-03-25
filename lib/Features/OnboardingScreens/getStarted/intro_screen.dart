@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../UiHelper/utilities/widgets/custom_primary_button.dart';
 
@@ -7,30 +8,55 @@ class IntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 10,
-          children: [
-            Text(
-              "Your fitness journey starts here",
-
-              textAlign: TextAlign.center,
+      body: Column(
+        spacing: 25,
+        children: [
+          Container(
+            height: size.height / 2.2,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage("assets/images/intro_image.jpg"),
+              ),
             ),
-            Text(
-              "Get personalized training plans, track your progress, and achieve your fitness goals with our app.",
-              textAlign: TextAlign.center,
-            ),
-            CustomPrimaryButton(btnName: "Sign In", onTap: () {}),
-            CustomPrimaryButton(
-              btnName: "Create new account",
-              secondary: true,
-              onTap: () {},
-            ),
-          ],
-        ),
+          ),
+          Column(
+            spacing: 10,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Your fitness journey starts here",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                width: size.width / 1.2,
+                child: Text(
+                  "Get personalized training plans, track your progress, and achieve your fitness goals with our app.",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: size.height / 16),
+          Column(
+            spacing: 20,
+            children: [
+              CustomPrimaryButton(btnName: "Sign In", onTap: () {}),
+              CustomPrimaryButton(
+                btnName: "Create new account",
+                secondary: true,
+                onTap: () {},
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

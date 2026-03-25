@@ -20,6 +20,7 @@ class CustomPrimaryButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: EdgeInsets.symmetric(horizontal: size.width / 15),
         width: size.width,
         height: size.height / 17,
         alignment: Alignment.center,
