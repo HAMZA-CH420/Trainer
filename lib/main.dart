@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/OnboardingScreens/splashScreen/splash_screen.dart';
-import 'package:trainer/Features/homescreen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
