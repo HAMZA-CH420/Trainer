@@ -48,26 +48,29 @@ class IntroScreen extends StatelessWidget {
             ],
           ),
           SizedBox(height: size.height / 18),
-          Column(
-            spacing: 20,
-            children: [
-              CustomPrimaryButton(
-                btnName: "Sign In",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                  );
-                },
-              ),
-              CustomPrimaryButton(
-                btnName: "Create new account",
-                secondary: true,
-                onTap: () {
-                  dialogueBox(context);
-                },
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              spacing: 20,
+              children: [
+                CustomPrimaryButton(
+                  btnName: "Sign In",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
+                  },
+                ),
+                CustomPrimaryButton(
+                  btnName: "Create new account",
+                  secondary: true,
+                  onTap: () {
+                    dialogueBox(context);
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),
