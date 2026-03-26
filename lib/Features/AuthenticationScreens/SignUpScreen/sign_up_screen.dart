@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/AuthenticationScreens/LoginScreen/login_screen.dart';
+import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/radio_widget.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
 import '../../../UiHelper/utilities/widgets/custom_primary_button.dart';
@@ -18,6 +19,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
 
   final TextEditingController passController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,43 +38,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
             icon: Icon(Icons.arrow_back, color: Palette.primaryColor, size: 30),
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            spacing: 25,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AuthTitle(
-                title: "Create your free account!",
-                subtitle: "Already have an account? ",
-                postSubtitle: "Sign In",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                  );
-                },
-              ),
-              Column(
-                spacing: 10,
-                children: [
-                  CustomTextField(
-                    title: "E-mail",
-                    hint: "abc@gmail.com",
-                    controller: emailController,
-                  ),
-                  CustomTextField(
-                    title: "Password",
-                    hint: "1234",
-                    isPass: true,
-                    controller: passController,
-                  ),
-                  AccountLoginWidget(title: "or Login with"),
-                  SizedBox(height: size.height / 3.2),
-                  CustomPrimaryButton(btnName: "Sign In", onTap: () {}),
-                ],
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Column(
+              spacing: 25,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AuthTitle(
+                  title: "Create your free account!",
+                  subtitle: "Already have an account? ",
+                  postSubtitle: "Sign In",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
+                  },
+                ),
+                Column(
+                  spacing: 10,
+                  children: [
+                    CustomTextField(
+                      title: "Username",
+                      hint: "i.e Hamza",
+                      controller: usernameController,
+                    ),
+                    CustomTextField(
+                      title: "E-mail",
+                      hint: "abc@gmail.com",
+                      controller: emailController,
+                    ),
+                    CustomTextField(
+                      title: "Password",
+                      hint: "1234",
+                      isPass: true,
+                      controller: passController,
+                    ),
+                    CustomTextField(
+                      title: "Phone Number",
+                      hint: "+92 123456789",
+                      controller: phoneController,
+                    ),
+                    AccountLoginWidget(title: "or Connect with"),
+                    RadioWidget(),
+                    SizedBox(height: size.height / 14),
+                    CustomPrimaryButton(btnName: "Continue", onTap: () {}),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
