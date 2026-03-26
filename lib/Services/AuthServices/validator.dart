@@ -24,11 +24,10 @@ class FieldValidator {
 
   // Password Validator
   static String? validatePassword(String? value) {
-    RegExp password = RegExp(r'^(?=.*[A-Z])(?=.*[0-9]).{8,}$');
     if (value == null || value.isEmpty) {
       return 'Password is required';
     }
-    if (password.hasMatch(value)) {
+    if (value.length < 8) {
       return 'Password must be at 8 characters long,one uppercase letter and one number';
     }
     return null;
