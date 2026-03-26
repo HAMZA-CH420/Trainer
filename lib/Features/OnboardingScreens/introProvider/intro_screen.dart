@@ -96,7 +96,7 @@ class IntroScreen extends StatelessWidget {
               ],
             ),
           ),
-          actions: [AlertBoxWidget()],
+          content: AlertBoxWidget(),
         );
       },
     );
