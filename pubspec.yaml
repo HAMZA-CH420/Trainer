@@ -37,6 +37,7 @@ dependencies:
   flutter_svg: ^2.2.4
   google_fonts: ^8.0.2
   provider: ^6.1.5+1
+  pinput: ^6.0.2
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/verification_screen.dart';
 import 'package:trainer/Features/OnboardingScreens/splashScreen/splash_screen.dart';
 
 void main() {
