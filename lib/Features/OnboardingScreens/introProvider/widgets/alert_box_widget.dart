@@ -28,11 +28,15 @@ class _AlertBoxWidgetState extends State<AlertBoxWidget> {
                 setState(() {
                   selectedIndex = index;
                 });
-                Navigator.pop(context);
-                Navigator.push(
+                final navigatePop = Navigator.pop(context);
+                final navigateNext = Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SignUpScreen()),
                 );
+                Future.delayed(Duration(seconds: 1), () {
+                  navigatePop;
+                  navigateNext;
+                });
               },
               child: Container(
                 height: size.height / 12,
