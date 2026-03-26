@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/goal_description_screen.dart';
 import 'package:trainer/Features/OnboardingScreens/splashScreen/splash_screen.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: SplashScreen(),
+      home: GoalDescriptionScreen(),
     );
   }
 }
