@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/sign_up_screen.dart';
 import 'package:trainer/UiHelper/colorPalette/color_palette.dart';
 
 class AlertBoxWidget extends StatefulWidget {
@@ -16,6 +17,10 @@ class _AlertBoxWidgetState extends State<AlertBoxWidget> {
   Widget build(BuildContext context) {
     List<String> content = ["TRAINER", "TRAINEE"];
     final size = MediaQuery.sizeOf(context);
+    final navigate = Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignUpScreen()),
+    );
     return Wrap(
       children: List.generate(content.length, (index) {
         bool isSelected = selectedIndex == index;
@@ -23,6 +28,9 @@ class _AlertBoxWidgetState extends State<AlertBoxWidget> {
           onTap: () {
             setState(() {
               selectedIndex = index;
+              Future.delayed(Duration(milliseconds: 800), () {
+                navigate;
+              });
             });
           },
           child: Container(
