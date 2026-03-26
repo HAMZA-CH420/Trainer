@@ -26,45 +26,47 @@ class AccountLoginWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                height: size.height / 18,
-                width: size.width / 2.4,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 10,
-                  children: [
-                    SvgPicture.asset("assets/logo/google.svg"),
-                    Text("Google"),
-                  ],
-                ),
+              account(
+                size: size,
+                title: "Google",
+                image: "google.svg",
+                onTap: () {},
               ),
-              Container(
-                height: size.height / 18,
-                width: size.width / 2.4,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 10,
-                  children: [
-                    SvgPicture.asset("assets/logo/apple.svg"),
-                    Text("Apple"),
-                  ],
-                ),
+              account(
+                size: size,
+                title: "Apple",
+                image: "apple.svg",
+                onTap: () {},
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget account({
+    required var size,
+    required String title,
+    required String image,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: size.height / 18,
+        width: size.width / 2.4,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.black12),
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 10,
+          children: [SvgPicture.asset("assets/logo/$image"), Text(title)],
+        ),
       ),
     );
   }
