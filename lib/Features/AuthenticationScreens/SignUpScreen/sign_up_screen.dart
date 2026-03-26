@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/AuthenticationScreens/LoginScreen/login_screen.dart';
+import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/verification_screen.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/radio_widget.dart';
+
+import 'package:trainer/Services/AuthServices/validator.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
 import '../../../UiHelper/utilities/widgets/custom_primary_button.dart';
@@ -21,6 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController passController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               spacing: 25,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,35 +60,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     );
                   },
                 ),
-                Column(
-                  spacing: 10,
-                  children: [
-                    CustomTextField(
-                      title: "Username",
-                      hint: "i.e Hamza",
-                      controller: usernameController,
-                    ),
-                    CustomTextField(
-                      title: "E-mail",
-                      hint: "abc@gmail.com",
-                      controller: emailController,
-                    ),
-                    CustomTextField(
-                      title: "Password",
-                      hint: "1234",
-                      isPass: true,
-                      controller: passController,
-                    ),
-                    CustomTextField(
-                      title: "Phone Number",
-                      hint: "+92 123456789",
-                      controller: phoneController,
-                    ),
-                    AccountLoginWidget(title: "or Connect with"),
-                    RadioWidget(),
-                    SizedBox(height: size.height / 14),
-                    CustomPrimaryButton(btnName: "Continue", onTap: () {}),
-                  ],
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    spacing: 10,
+                    children: [
+                      CustomTextField(
+                        title: "Username",
+                        hint: "i.e Hamza",
+                        controller: usernameController,
+                        validator: (value) =>
+                            FieldValidator.validateUsername(value),
+                      ),
+                      CustomTextField(
+                        title: "E-mail",
+                        hint: "abc@gmail.com",
+                        controller: emailController,
+                        validator: (value) =>
+                            FieldValidator.validateEmail(value),
+                      ),
+                      CustomTextField(
+                        title: "Password",
+                        hint: "1234",
+                        isPass: true,
+                        controller: passController,
+                        validator: (value) =>
+                            FieldValidator.validatePassword(value),
+                      ),
+                      CustomTextField(
+                        title: "Phone Number",
+                        hint: "+92 123456789",
+                        controller: phoneController,
+                        validator: (value) =>
+                            FieldValidator.validatePhoneNumber(value),
+                      ),
+                      AccountLoginWidget(title: "or Connect with"),
+                      RadioWidget(),
+                      SizedBox(height: size.height / 14),
+                      CustomPrimaryButton(
+                        btnName: "Continue",
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VerificationScreen(),
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

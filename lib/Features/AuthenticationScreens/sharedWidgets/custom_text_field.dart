@@ -10,12 +10,14 @@ class CustomTextField extends StatefulWidget {
     required this.hint,
     this.isPass = false,
     required this.controller,
+    this.validator,
   });
 
   final String title;
   final String hint;
   final bool isPass;
   final TextEditingController controller;
+  final FormFieldValidator<String>? validator;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -35,12 +37,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 18),
         ),
         Container(
-          height: 55,
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(color: Color(0xFFEBEDEF)),
           child: TextFormField(
             controller: widget.controller,
+            validator: widget.validator,
             obscureText: widget.isPass ? showPass : false,
             decoration: InputDecoration(
               border: InputBorder.none,
