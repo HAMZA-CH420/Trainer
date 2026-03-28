@@ -39,6 +39,7 @@ dependencies:
   provider: ^6.1.5+1
   pinput: ^6.0.2
   iconsax: ^0.0.8
+  firebase_core: ^4.6.0
 
 dev_dependencies:
   flutter_test:
