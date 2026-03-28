@@ -1,7 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/OnboardingScreens/splashScreen/splash_screen.dart';
 
-void main() {
+void main() async {
+  //firebase integration
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
