@@ -38,8 +38,8 @@ class LocalDataBase {
     required String email,
     required String password,
     required String phoneNumber,
-    required String goals,
-   
+    String? goals,
+
     required String type,
   }) async {
     var db = await getDb();
