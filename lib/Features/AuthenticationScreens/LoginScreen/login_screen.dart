@@ -72,10 +72,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     CustomPrimaryButton(
                       btnName: "Sign In",
                       onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
+                        }
                       },
                     ),
                   ],
