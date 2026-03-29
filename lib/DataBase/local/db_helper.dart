@@ -27,30 +27,43 @@ class LocalDataBase {
       dirPath,
       onCreate: (db, version) {
         db.execute(
-          "create table userList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text,type text)",
+          "create table userList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text,type text,userId text)",
         );
       },
     );
   }
 
-  Future<bool> newUser({
+  Future<String?> newUser({
     required String userName,
     required String email,
     required String password,
     required String phoneNumber,
-    String? goals,
 
     required String type,
   }) async {
+    String userId =
+        "${userName.toLowerCase().replaceAll(' ', '_')}_${DateTime.now().millisecondsSinceEpoch}";
+
     var db = await getDb();
     int rowsAffected = await db.insert("userList", {
       "userName": userName,
+      "userId": userId,
       "email": email,
       "password": password,
       "phoneNumber": phoneNumber,
-      "goals": goals,
       "type": type,
     });
-    return rowsAffected > 0;
+    return rowsAffected > 0 ? userId : null;
+  }
+
+  Future<bool> updateGoals({required userId, required goals}) async {
+    var db = await getDb();
+    int count = await db.update(
+      "userList",
+      {"goals": goals},
+      where: "userId = ?",
+      whereArgs: [userId],
+    );
+    return count > 0;
   }
 }
