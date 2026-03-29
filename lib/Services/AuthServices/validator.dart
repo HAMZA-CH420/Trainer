@@ -30,6 +30,7 @@ class FieldValidator {
     if (value.length < 8) {
       return 'Password must be at 8 characters long,one uppercase letter and one number';
     }
+
     return null;
   }
 
