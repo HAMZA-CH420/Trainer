@@ -31,7 +31,9 @@ class _AlertBoxWidgetState extends State<AlertBoxWidget> {
                 final navigatePop = Navigator.pop(context);
                 final navigateNext = Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUpScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => SignUpScreen(type: content[index]),
+                  ),
                 );
                 Future.delayed(Duration(seconds: 1), () {
                   navigatePop;

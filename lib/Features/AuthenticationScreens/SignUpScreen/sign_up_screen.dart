@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:trainer/Features/AuthenticationScreens/LoginScreen/login_screen.dart';
 import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/verification_screen.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/radio_widget.dart';
 
 import 'package:trainer/Services/AuthServices/validator.dart';
+import 'package:trainer/viewModel/Providers/AuthenticationProviders/sign_up_provider.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
 import '../../../UiHelper/utilities/widgets/custom_primary_button.dart';
@@ -12,7 +14,9 @@ import '../sharedWidgets/auth_title.dart';
 import '../sharedWidgets/custom_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+  const SignUpScreen({super.key, required this.type});
+
+  final String type;
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -101,6 +105,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         btnName: "Continue",
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
+                            context.read<SignUpProvider>().createUser(
+                              userName: usernameController.text.toString(),
+                              email: emailController.text.toString(),
+                              password: passController.text.toString(),
+                              phoneNumber: phoneController.text.toString(),
+                              type: widget.type,
+                            );
                             Navigator.push(
                               context,
                               MaterialPageRoute(
