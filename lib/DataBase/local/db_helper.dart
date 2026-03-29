@@ -27,9 +27,30 @@ class LocalDataBase {
       dirPath,
       onCreate: (db, version) {
         db.execute(
-          "create table credentialList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text, role text,type text)",
+          "create table userList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text,type text)",
         );
       },
     );
+  }
+
+  Future<bool> newUser({
+    required String userName,
+    required String email,
+    required String password,
+    required String phoneNumber,
+    required String goals,
+   
+    required String type,
+  }) async {
+    var db = await getDb();
+    int rowsAffected = await db.insert("userList", {
+      "userName": userName,
+      "email": email,
+      "password": password,
+      "phoneNumber": phoneNumber,
+      "goals": goals,
+      "type": type,
+    });
+    return rowsAffected > 0;
   }
 }
