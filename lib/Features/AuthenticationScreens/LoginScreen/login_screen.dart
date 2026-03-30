@@ -4,7 +4,8 @@ import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/account_log
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/auth_title.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
 import 'package:trainer/Features/homescreen/home_screen.dart';
-import 'package:trainer/Services/AuthServices/credential_validator.dart';
+
+import 'package:trainer/Services/AuthServices/validator.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
@@ -67,18 +68,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         title: "E-mail",
                         hint: "abc@gmail.com",
                         controller: emailController,
-                        validator: (value) => CredentialsValidator(
-                          email: "",
-                        ).validateEmail(value),
+                        validator: (value) =>
+                            FieldValidator.validateEmail(value),
                       ),
                       CustomTextField(
                         title: "Password",
                         hint: "1234",
                         isPass: true,
                         controller: passController,
-                        validator: (value) => CredentialsValidator(
-                          password: "",
-                        ).validatePassword(value),
+                        validator: (value) =>
+                            FieldValidator.validatePassword(value),
                       ),
                       AccountLoginWidget(title: "or Login with"),
                       SizedBox(height: size.height / 3.2),

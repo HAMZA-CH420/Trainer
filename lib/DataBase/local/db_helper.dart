@@ -30,6 +30,7 @@ class LocalDataBase {
           "create table userList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text,type text,userId text)",
         );
       },
+      version: 1,
     );
   }
 
