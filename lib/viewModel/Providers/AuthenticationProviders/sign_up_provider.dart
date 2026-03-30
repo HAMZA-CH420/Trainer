@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../DataBase/local/db_helper.dart';
 
-class SignUpProvider with ChangeNotifier {
+class SignUpProvider extends ChangeNotifier {
   LocalDataBase localDataBase = LocalDataBase.getInstance();
 
   Future<String?> createUser({

@@ -115,10 +115,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             context.read<SignUpProvider>().createUser(
-                              userName: usernameController.text.toString(),
-                              email: emailController.text.toString(),
-                              password: passController.text.toString(),
-                              phoneNumber: phoneController.text.toString(),
+                              userName: usernameController.text.trim(),
+                              email: emailController.text.trim(),
+                              password: passController.text.trim(),
+                              phoneNumber: phoneController.text
+                                  .toString()
+                                  .trim(),
                               type: widget.type,
                             );
                             Navigator.push(

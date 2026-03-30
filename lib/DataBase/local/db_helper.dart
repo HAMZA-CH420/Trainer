@@ -67,6 +67,20 @@ class LocalDataBase {
     return count > 0;
   }
 
+  //login validation
+  Future<Map<String, dynamic>?> loginUser({
+    required String email,
+    required String password,
+  }) async {
+    var db = await getDb();
+    var results = await db.query(
+      "userList",
+      where: "email = ? AND password = ?",
+      whereArgs: [email, password],
+    );
+    return results.isNotEmpty ? results.first : null;
+  }
+
   Future<List<Map<String, dynamic>>> getUser() async {
     var db = await getDb();
     return await db.query("userList");
