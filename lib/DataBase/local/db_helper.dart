@@ -66,4 +66,9 @@ class LocalDataBase {
     );
     return count > 0;
   }
+
+  Future<List<Map<String, dynamic>>> getUser() async {
+    var db = await getDb();
+    return await db.query("userList");
+  }
 }

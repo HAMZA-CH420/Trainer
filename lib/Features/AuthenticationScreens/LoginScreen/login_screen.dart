@@ -3,6 +3,7 @@ import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/account_log
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/auth_title.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
 import 'package:trainer/Features/homescreen/home_screen.dart';
+import 'package:trainer/Services/AuthServices/credential_validator.dart';
 import 'package:trainer/Services/AuthServices/validator.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
@@ -19,6 +20,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController passController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +63,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       title: "E-mail",
                       hint: "abc@gmail.com",
                       controller: emailController,
-                      validator: (value) => FieldValidator.validateEmail(value),
+                      validator: (value) =>
+                          CredentialsValidator(email: "").validateEmail(value),
                     ),
                     CustomTextField(
                       title: "Password",
                       hint: "1234",
                       isPass: true,
                       controller: passController,
-                      validator: (value) =>
-                          FieldValidator.validatePassword(value),
+                      validator: (value) => CredentialsValidator(
+                        password: "",
+                      ).validatePassword(value),
                     ),
                     AccountLoginWidget(title: "or Login with"),
                     SizedBox(height: size.height / 3.2),
