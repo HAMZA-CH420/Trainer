@@ -4,9 +4,10 @@ import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/auth_title.
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
 import 'package:trainer/Features/homescreen/home_screen.dart';
 import 'package:trainer/Services/AuthServices/credential_validator.dart';
-import 'package:trainer/Services/AuthServices/validator.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
+
+import '../../../DataBase/local/db_helper.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,10 +21,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController passController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  late final List<Map<String, dynamic>> userData;
+  final LocalDataBase db = LocalDataBase.getInstance();
 
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passController.dispose();
+    super.dispose();
   }
 
   @override
