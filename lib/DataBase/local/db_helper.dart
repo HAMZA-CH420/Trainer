@@ -74,7 +74,6 @@ class LocalDataBase {
     return count > 0;
   }
 
-  // Example of how to decode it when reading
   Future<List<String>> getGoals(String userId) async {
     var db = await getDb();
     var maps = await db.query(
