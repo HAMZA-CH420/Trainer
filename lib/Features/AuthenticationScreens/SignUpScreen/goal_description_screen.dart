@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/common_goals_widget.dart';
+import 'package:trainer/Features/homescreen/home_screen.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
@@ -70,7 +71,16 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                 controller: controller,
               ),
               SizedBox(height: size.height / 5.5),
-              CustomPrimaryButton(btnName: "Next", onTap: () {}),
+              CustomPrimaryButton(
+                btnName: "Next",
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    (route) => false,
+                  );
+                },
+              ),
             ],
           ),
         ),

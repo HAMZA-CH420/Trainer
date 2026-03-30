@@ -92,11 +92,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   password: passController.text.trim(),
                                 );
                             if (isUser) {
-                              Navigator.pushReplacement(
+                              Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => HomeScreen(),
                                 ),
+                                (route) => false,
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
