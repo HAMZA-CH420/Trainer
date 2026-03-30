@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart';
@@ -57,15 +58,37 @@ class LocalDataBase {
     return rowsAffected > 0 ? userId : null;
   }
 
-  Future<bool> updateGoals({required userId, required goals}) async {
+  Future<bool> updateGoals({
+    required String userId,
+    required List<String> goals,
+  }) async {
     var db = await getDb();
+    String goalsJson = jsonEncode(goals);
+
     int count = await db.update(
       "userList",
-      {"goals": goals},
+      {"goals": goalsJson},
       where: "userId = ?",
       whereArgs: [userId],
     );
     return count > 0;
+  }
+
+  // Example of how to decode it when reading
+  Future<List<String>> getGoals(String userId) async {
+    var db = await getDb();
+    var maps = await db.query(
+      "userList",
+      columns: ["goals"],
+      where: "userId = ?",
+      whereArgs: [userId],
+    );
+
+    if (maps.isNotEmpty && maps.first["goals"] != null) {
+      String goalsJson = maps.first["goals"] as String;
+      return List<String>.from(jsonDecode(goalsJson));
+    }
+    return [];
   }
 
   //login validation
@@ -80,10 +103,5 @@ class LocalDataBase {
       whereArgs: [email, password],
     );
     return results.isNotEmpty ? results.first : null;
-  }
-
-  Future<List<Map<String, dynamic>>> getUser() async {
-    var db = await getDb();
-    return await db.query("userList");
   }
 }

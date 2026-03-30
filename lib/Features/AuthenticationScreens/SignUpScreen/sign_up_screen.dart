@@ -112,23 +112,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(height: size.height / 14),
                       CustomPrimaryButton(
                         btnName: "Continue",
-                        onTap: () {
+                        onTap: () async {
                           if (_formKey.currentState!.validate()) {
-                            context.read<SignUpProvider>().createUser(
-                              userName: usernameController.text.trim(),
-                              email: emailController.text.trim(),
-                              password: passController.text.trim(),
-                              phoneNumber: phoneController.text
-                                  .toString()
-                                  .trim(),
-                              type: widget.type,
-                            );
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GoalDescriptionScreen(),
-                              ),
-                            );
+                            String? userId = await context
+                                .read<SignUpProvider>()
+                                .createUser(
+                                  userName: usernameController.text.trim(),
+                                  email: emailController.text.trim(),
+                                  password: passController.text.trim(),
+                                  phoneNumber: phoneController.text
+                                      .toString()
+                                      .trim(),
+                                  type: widget.type,
+                                );
+                            if (userId != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      GoalDescriptionScreen(userId: userId),
+                                ),
+                              );
+                            }
                           }
                         },
                       ),

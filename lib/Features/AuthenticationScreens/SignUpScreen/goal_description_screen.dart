@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/common_goals_widget.dart';
 import 'package:trainer/Features/homescreen/home_screen.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
+import 'package:trainer/viewModel/Providers/AuthenticationProviders/sign_up_provider.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
 
 class GoalDescriptionScreen extends StatefulWidget {
-  const GoalDescriptionScreen({super.key});
+  final String userId;
+  const GoalDescriptionScreen({super.key, required this.userId});
 
   @override
   State<GoalDescriptionScreen> createState() => _GoalDescriptionScreenState();
@@ -15,10 +18,10 @@ class GoalDescriptionScreen extends StatefulWidget {
 
 class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
   final controller = TextEditingController();
+  List<String> selectedGoals = [];
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -54,8 +57,11 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                   ),
                 ],
               ),
-
-              CommonGoalsWidget(),
+              CommonGoalsWidget(
+                onGoalsSelected: (goals) {
+                  selectedGoals = goals;
+                },
+              ),
               Text(
                 "Custom Goals",
                 style: GoogleFonts.poppins(
@@ -64,21 +70,38 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                 ),
               ),
               TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Enter your goal",
                 ),
                 controller: controller,
               ),
-              SizedBox(height: size.height / 5.5),
+              const SizedBox(height: 20),
               CustomPrimaryButton(
-                btnName: "Next",
+                btnName: "Finish",
                 onTap: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                    (route) => false,
-                  );
+                  // Combine common goals and custom goal
+                  List<String> finalGoals = List.from(selectedGoals);
+                  if (controller.text.trim().isNotEmpty) {
+                    finalGoals.add(controller.text.trim());
+                  }
+
+                  if (finalGoals.isNotEmpty) {
+                    context.read<SignUpProvider>().updateGoals(
+                          userId: widget.userId,
+                          goals: finalGoals,
+                        );
+
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      (route) => false,
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Please select or enter at least one goal")),
+                    );
+                  }
                 },
               ),
             ],

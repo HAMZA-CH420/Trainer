@@ -21,7 +21,10 @@ class SignUpProvider extends ChangeNotifier {
     );
   }
 
-  void updateGoals({required String userId, required String goals}) async {
+  void updateGoals({
+    required String userId,
+    required List<String> goals,
+  }) async {
     await localDataBase.updateGoals(userId: userId, goals: goals);
     notifyListeners();
   }
