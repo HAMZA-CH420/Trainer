@@ -9,6 +9,7 @@ import 'package:trainer/Features/BottomNavBar/bottom_nav_bar.dart';
 import 'package:trainer/Services/AuthServices/validator.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
+import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -95,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                             if (isUser) {
                               if (context.mounted) {
-                                var pref = SharedPreferences.getInstance();
+                                final pref = SharedPreferences.getInstance();
                                 pref.then((value) {
                                   value.setBool("userLogged", true);
                                 });
@@ -106,20 +107,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   (route) => false,
                                 );
+                                ToastMessage.showToast(
+                                  msg: "LogIn Successful",
+                                  isError: false,
+                                );
                               }
                             } else {
                               if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    backgroundColor: Colors.white,
-                                    content: Text(
-                                      "Invalid Username or Password.",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                  ),
+                                ToastMessage.showToast(
+                                  msg: "Invalid username or password",
+                                  isError: true,
                                 );
                               }
                             }

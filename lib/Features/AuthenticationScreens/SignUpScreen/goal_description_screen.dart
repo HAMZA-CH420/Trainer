@@ -6,6 +6,7 @@ import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/common_goal
 import 'package:trainer/Features/BottomNavBar/bottom_nav_bar.dart';
 
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
+import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
 import 'package:trainer/viewModel/Providers/AuthenticationProviders/sign_up_provider.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
@@ -83,7 +84,6 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
               CustomPrimaryButton(
                 btnName: "Finish",
                 onTap: () {
-                  // Combine common goals and custom goal
                   List<String> finalGoals = List.from(selectedGoals);
                   if (controller.text.trim().isNotEmpty) {
                     finalGoals.add(controller.text.trim());
@@ -98,6 +98,7 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                     pref.then((value) {
                       value.setBool("userLogged", true);
                     });
+
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
@@ -105,13 +106,9 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                       ),
                       (route) => false,
                     );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                          "Please select or enter at least one goal",
-                        ),
-                      ),
+                    ToastMessage.showToast(
+                      msg: "Account creation successful.",
+                      isError: false,
                     );
                   }
                 },

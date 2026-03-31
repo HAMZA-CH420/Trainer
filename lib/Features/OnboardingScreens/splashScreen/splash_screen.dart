@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trainer/Features/AuthenticationScreens/LoginScreen/login_screen.dart';
+import 'package:trainer/Features/BottomNavBar/bottom_nav_bar.dart';
 
 import '../../../UiHelper/colorPalette/color_palette.dart';
 import '../introProvider/intro_screen.dart';
@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => isLogged ? LoginScreen() : IntroScreen(),
+            builder: (context) => isLogged ? BottomNavBar() : IntroScreen(),
           ),
         );
       });
