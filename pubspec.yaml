@@ -38,8 +38,6 @@ dependencies:
   google_fonts: ^8.0.2
   provider: ^6.1.5+1
   pinput: ^6.0.2
-  iconsax: ^0.0.8
-  firebase_core: ^4.6.0
   sqflite: ^2.4.2
   path: ^1.9.1
   path_provider: ^2.1.5
