@@ -96,9 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                             if (isUser) {
                               if (context.mounted) {
-                                final pref = await SharedPreferences.getInstance();
+                                final pref =
+                                    await SharedPreferences.getInstance();
                                 await pref.setBool("userLogged", true);
-                                
                                 ToastMessage.showToast(
                                   message: "LogIn Successful",
                                   isError: false,
@@ -107,7 +107,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const BottomNavBar(),
+                                      builder: (context) =>
+                                          const BottomNavBar(),
                                     ),
                                     (route) => false,
                                   );
