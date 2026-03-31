@@ -13,8 +13,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
     int primaryIndex = 0;
     final List<Widget> screens = [];
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(items: []),
-      body: Container(),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: primaryIndex,
+        items: [],
+      ),
+      body: IndexedStack(index: primaryIndex, children: screens),
     );
   }
 }
