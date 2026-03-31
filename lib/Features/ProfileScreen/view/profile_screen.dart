@@ -3,6 +3,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/OnboardingScreens/introProvider/intro_screen.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
+import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -17,6 +18,7 @@ class ProfileScreen extends StatelessWidget {
             final SharedPreferences pref =
                 await SharedPreferences.getInstance();
             pref.setBool("userLogged", false);
+            ToastMessage.showToast(message: "Logged out ", isError: true);
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => IntroScreen()),

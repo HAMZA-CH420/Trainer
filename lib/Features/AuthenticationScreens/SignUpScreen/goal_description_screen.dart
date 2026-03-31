@@ -107,7 +107,7 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                       (route) => false,
                     );
                     ToastMessage.showToast(
-                      msg: "Account creation successful.",
+                      message: "Account creation successful.",
                       isError: false,
                     );
                   }

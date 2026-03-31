@@ -96,26 +96,27 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                             if (isUser) {
                               if (context.mounted) {
-                                final pref = SharedPreferences.getInstance();
-                                pref.then((value) {
-                                  value.setBool("userLogged", true);
-                                });
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const BottomNavBar(),
-                                  ),
-                                  (route) => false,
-                                );
+                                final pref = await SharedPreferences.getInstance();
+                                await pref.setBool("userLogged", true);
+                                
                                 ToastMessage.showToast(
-                                  msg: "LogIn Successful",
+                                  message: "LogIn Successful",
                                   isError: false,
                                 );
+                                if (context.mounted) {
+                                  Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const BottomNavBar(),
+                                    ),
+                                    (route) => false,
+                                  );
+                                }
                               }
                             } else {
                               if (context.mounted) {
                                 ToastMessage.showToast(
-                                  msg: "Invalid username or password",
+                                  message: "Invalid username or password",
                                   isError: true,
                                 );
                               }
