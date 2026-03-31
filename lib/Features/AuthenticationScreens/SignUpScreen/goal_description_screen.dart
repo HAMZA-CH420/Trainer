@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/common_goals_widget.dart';
 import 'package:trainer/Features/BottomNavBar/bottom_nav_bar.dart';
 
@@ -93,7 +94,10 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                       userId: widget.userId,
                       goals: finalGoals,
                     );
-
+                    var pref = SharedPreferences.getInstance();
+                    pref.then((value) {
+                      value.setBool("userLogged", true);
+                    });
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(

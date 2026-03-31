@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/account_login_widget.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/auth_title.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
@@ -94,10 +95,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                             if (isUser) {
                               if (context.mounted) {
+                                var pref = SharedPreferences.getInstance();
+                                pref.then((value) {
+                                  value.setBool("userLogged", true);
+                                });
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const BottomNavBar()),
+                                    builder: (context) => const BottomNavBar(),
+                                  ),
                                   (route) => false,
                                 );
                               }
@@ -109,8 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     content: Text(
                                       "Invalid Username or Password.",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.red),
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.red,
+                                      ),
                                     ),
                                   ),
                                 );
