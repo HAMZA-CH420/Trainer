@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/common_goals_widget.dart';
-import 'package:trainer/Features/homescreen/home_screen.dart';
+import 'package:trainer/Features/BottomNavBar/bottom_nav_bar.dart';
+
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 import 'package:trainer/viewModel/Providers/AuthenticationProviders/sign_up_provider.dart';
 
@@ -10,6 +11,7 @@ import '../../../UIhelper/colorPalette/color_palette.dart';
 
 class GoalDescriptionScreen extends StatefulWidget {
   final String userId;
+
   const GoalDescriptionScreen({super.key, required this.userId});
 
   @override
@@ -88,18 +90,24 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
 
                   if (finalGoals.isNotEmpty) {
                     context.read<SignUpProvider>().updateGoals(
-                          userId: widget.userId,
-                          goals: finalGoals,
-                        );
+                      userId: widget.userId,
+                      goals: finalGoals,
+                    );
 
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      MaterialPageRoute(
+                        builder: (context) => const BottomNavBar(),
+                      ),
                       (route) => false,
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Please select or enter at least one goal")),
+                      const SnackBar(
+                        content: Text(
+                          "Please select or enter at least one goal",
+                        ),
+                      ),
                     );
                   }
                 },

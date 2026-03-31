@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
+import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/goal_description_screen.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 
 class VerificationScreen extends StatelessWidget {
-  const VerificationScreen({super.key});
+  const VerificationScreen({super.key, required this.userId});
+
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +90,17 @@ class VerificationScreen extends StatelessWidget {
                 ),
               ],
             ),
-            CustomPrimaryButton(btnName: "Verify", onTap: () {}),
+            CustomPrimaryButton(
+              btnName: "Verify",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GoalDescriptionScreen(userId: userId),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

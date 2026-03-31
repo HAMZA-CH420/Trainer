@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/account_login_widget.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/auth_title.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
-import 'package:trainer/Features/homescreen/home_screen.dart';
+import 'package:trainer/Features/BottomNavBar/bottom_nav_bar.dart';
 
 import 'package:trainer/Services/AuthServices/validator.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final size = MediaQuery.sizeOf(context);
     final navigation = Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => HomeScreen()),
+      MaterialPageRoute(builder: (context) => BottomNavBar()),
       (route) => false,
     );
     final snackBar = ScaffoldMessenger.of(context).showSnackBar(

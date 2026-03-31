@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trainer/Features/AuthenticationScreens/LoginScreen/login_screen.dart';
-import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/goal_description_screen.dart';
+import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/verification_screen.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/radio_widget.dart';
 
 import 'package:trainer/Services/AuthServices/validator.dart';
@@ -130,7 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      GoalDescriptionScreen(userId: userId),
+                                      VerificationScreen(userId: userId),
                                 ),
                               );
                             }
