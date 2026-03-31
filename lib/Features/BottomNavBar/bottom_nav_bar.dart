@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:trainer/Features/DashboardScreen/view/dashboard_screen.dart';
@@ -5,6 +6,7 @@ import 'package:trainer/Features/NutritionScreen/view/nutrition_screen.dart';
 import 'package:trainer/Features/ProfileScreen/view/profile_screen.dart';
 import 'package:trainer/Features/ScheduleScreen/view/schedule_screen.dart';
 import 'package:trainer/Features/WorkoutScreen/view/workout_screen.dart';
+import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -14,9 +16,10 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  int primaryIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    int primaryIndex = 0;
     final List<Widget> screens = [
       DashboardScreen(),
       ScheduleScreen(),
@@ -26,27 +29,39 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: primaryIndex,
+        onTap: (value) {
+          setState(() {
+            primaryIndex = value;
+          });
+        },
+        selectedIconTheme: IconThemeData(color: Palette.primaryColor),
+        unselectedIconTheme: IconThemeData(color: Colors.black54),
+        selectedItemColor: Palette.primaryColor,
+        unselectedItemColor: Colors.black54,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         items: [
           BottomNavigationBarItem(
-            icon: HugeIcon(icon: HugeIcons.strokeRoundedHome01),
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedHome01, size: 30),
             label: "Dashboard",
           ),
           BottomNavigationBarItem(
-            icon: HugeIcon(icon: HugeIcons.strokeRoundedHome01),
-            label: "Dashboard",
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedCalendarSetting01),
+            label: "Schedule",
           ),
           BottomNavigationBarItem(
-            icon: HugeIcon(icon: HugeIcons.strokeRoundedHome01),
-            label: "Dashboard",
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedBodyPartMuscle),
+            label: "Workout",
           ),
           BottomNavigationBarItem(
-            icon: HugeIcon(icon: HugeIcons.strokeRoundedHome01),
-            label: "Dashboard",
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedCarrot),
+            label: "Nutrition",
           ),
           BottomNavigationBarItem(
-            icon: HugeIcon(icon: HugeIcons.strokeRoundedHome01),
-            label: "Dashboard",
+            icon: Icon(CupertinoIcons.person),
+            label: "Profile",
           ),
         ],
       ),

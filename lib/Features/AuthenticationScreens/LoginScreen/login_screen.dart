@@ -33,21 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    final navigation = Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (context) => BottomNavBar()),
-      (route) => false,
-    );
-    final snackBar = ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.white,
 
-        content: Text(
-          "Invalid Username or Password.",
-          style: TextStyle(fontWeight: FontWeight.w500, color: Colors.red),
-        ),
-      ),
-    );
     return GestureDetector(
       onTap: () {
         FocusManager.instance.primaryFocus!.unfocus();
@@ -107,9 +93,28 @@ class _LoginScreenState extends State<LoginScreen> {
                                   password: passController.text.trim(),
                                 );
                             if (isUser) {
-                              navigation;
+                              if (context.mounted) {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const BottomNavBar()),
+                                  (route) => false,
+                                );
+                              }
                             } else {
-                              snackBar;
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    backgroundColor: Colors.white,
+                                    content: Text(
+                                      "Invalid Username or Password.",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.red),
+                                    ),
+                                  ),
+                                );
+                              }
                             }
                           }
                         },
