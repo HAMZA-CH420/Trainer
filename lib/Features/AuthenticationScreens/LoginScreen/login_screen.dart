@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/account_login_widget.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/auth_title.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
@@ -96,23 +95,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                             if (isUser) {
                               if (context.mounted) {
-                                final pref =
-                                    await SharedPreferences.getInstance();
-                                await pref.setBool("userLogged", true);
                                 ToastMessage.showToast(
                                   message: "LogIn Successful",
                                   isError: false,
                                 );
-                                if (context.mounted) {
-                                  Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const BottomNavBar(),
-                                    ),
-                                    (route) => false,
-                                  );
-                                }
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const BottomNavBar(),
+                                  ),
+                                  (route) => false,
+                                );
                               }
                             } else {
                               if (context.mounted) {
