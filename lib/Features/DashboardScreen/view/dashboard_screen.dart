@@ -16,6 +16,22 @@ class DashboardScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          spacing: 20,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Upcoming",
+              style: GoogleFonts.poppins(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
