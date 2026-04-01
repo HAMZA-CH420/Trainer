@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/progress_widget_button.dart';
-import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 
 class ProgressWidget extends StatefulWidget {
   const ProgressWidget({super.key});
