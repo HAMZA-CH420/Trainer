@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
+import 'package:trainer/Features/DashboardScreen/widgets/today_training_widget.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -22,13 +24,9 @@ class DashboardScreen extends StatelessWidget {
           spacing: 20,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Upcoming",
-              style: GoogleFonts.poppins(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            DashTitle(title: "Upcoming"),
+            TodayTrainingWidget(),
+            DashTitle(title: "Progress"),
           ],
         ),
       ),
