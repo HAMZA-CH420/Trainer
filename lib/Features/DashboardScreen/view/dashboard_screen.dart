@@ -17,7 +17,7 @@ class DashboardScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         child: Column(
           spacing: 20,
           crossAxisAlignment: CrossAxisAlignment.start,
