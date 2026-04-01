@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
+import 'package:trainer/Features/DashboardScreen/widgets/progress_widget.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/today_training_widget.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
@@ -18,16 +19,19 @@ class DashboardScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        child: Column(
-          spacing: 20,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            DashTitle(title: "Upcoming"),
-            TodayTrainingWidget(),
-            DashTitle(title: "Progress"),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: Column(
+            spacing: 20,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DashTitle(title: "Upcoming"),
+              TodayTrainingWidget(),
+              DashTitle(title: "Progress"),
+              ProgressWidget(),
+            ],
+          ),
         ),
       ),
     );
