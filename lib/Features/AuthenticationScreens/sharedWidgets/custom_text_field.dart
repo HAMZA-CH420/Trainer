@@ -39,7 +39,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
         Container(
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(color: Color(0xFFEBEDEF)),
+          decoration: BoxDecoration(
+            color: Color(0xFFEBEDEF),
+            borderRadius: BorderRadius.circular(8),
+          ),
           child: TextFormField(
             controller: widget.controller,
             validator: widget.validator,
