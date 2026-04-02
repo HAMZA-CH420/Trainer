@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/custom_search_bar.dart';
+import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/discount_and_invite_widget.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/filter_widget.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
 
@@ -10,7 +11,13 @@ class FindTrainerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: appBar(context));
+    return Scaffold(
+      appBar: appBar(context),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15),
+        child: Column(children: [DiscountAndInviteWidget()]),
+      ),
+    );
   }
 
   PreferredSizeWidget appBar(BuildContext context) {
