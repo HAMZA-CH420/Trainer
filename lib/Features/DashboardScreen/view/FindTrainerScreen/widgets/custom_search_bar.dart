@@ -15,8 +15,14 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
 
   @override
   void initState() {
-    controller.addListener(() => widget.onChanged(controller.text));
     super.initState();
+    controller.addListener(() => widget.onChanged(controller.text));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose;
+    super.dispose();
   }
 
   @override
@@ -29,7 +35,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
       padding: EdgeInsets.only(left: 10, top: 5),
       decoration: BoxDecoration(
         color: Color(0xFFE8EDF5),
-        borderRadius: BorderRadius.circular(13),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: TextField(
         controller: controller,
