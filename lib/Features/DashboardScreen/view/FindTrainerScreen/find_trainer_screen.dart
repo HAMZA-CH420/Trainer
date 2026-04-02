@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/custom_search_bar.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/discount_and_invite_widget.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/filter_widget.dart';
+import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/trainer_list.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
 
 import '../../../../UIhelper/colorPalette/color_palette.dart';
@@ -15,7 +16,10 @@ class FindTrainerScreen extends StatelessWidget {
       appBar: appBar(context),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15),
-        child: Column(children: [DiscountAndInviteWidget()]),
+        child: Column(
+          spacing: 5,
+          children: [DiscountAndInviteWidget(), TrainerList()],
+        ),
       ),
     );
   }
@@ -35,7 +39,7 @@ class FindTrainerScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            spacing: 10,
+            spacing: 20,
             children: [
               CustomSearchBar(onChanged: (query) {}),
               FilterWidget(),
