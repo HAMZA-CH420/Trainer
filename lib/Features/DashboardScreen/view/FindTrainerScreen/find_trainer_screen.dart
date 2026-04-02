@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/custom_search_bar.dart';
+import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/filter_widget.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
 
 import '../../../../UIhelper/colorPalette/color_palette.dart';
@@ -23,17 +24,15 @@ class FindTrainerScreen extends StatelessWidget {
       title: DashTitle(title: "Find a Trainer"),
       centerTitle: true,
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(130),
+        preferredSize: Size.fromHeight(110),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
-            color: Colors.orange,
-            child: Column(
-              children: [
-                CustomSearchBar(onChanged: (query) {}),
-                SizedBox(height: 60),
-              ],
-            ),
+          child: Column(
+            spacing: 10,
+            children: [
+              CustomSearchBar(onChanged: (query) {}),
+              FilterWidget(),
+            ],
           ),
         ),
       ),
