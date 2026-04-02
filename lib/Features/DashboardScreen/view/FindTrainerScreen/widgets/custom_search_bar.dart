@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
 class CustomSearchBar extends StatefulWidget {
-  const CustomSearchBar({super.key});
+  const CustomSearchBar({super.key, required this.onChanged});
+
+  final Function(String) onChanged;
 
   @override
   State<CustomSearchBar> createState() => _CustomSearchBarState();
 }
 
 class _CustomSearchBarState extends State<CustomSearchBar> {
-  TextEditingController controller = TextEditingController();
+  final TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    controller.addListener(() => widget.onChanged(controller.text));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

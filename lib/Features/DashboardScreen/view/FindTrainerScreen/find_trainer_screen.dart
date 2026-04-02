@@ -28,7 +28,12 @@ class FindTrainerScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Container(
             color: Colors.orange,
-            child: Column(children: [CustomSearchBar(), SizedBox(height: 60)]),
+            child: Column(
+              children: [
+                CustomSearchBar(onChanged: (query) {}),
+                SizedBox(height: 60),
+              ],
+            ),
           ),
         ),
       ),
