@@ -24,6 +24,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         borderRadius: BorderRadius.circular(13),
       ),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           border: InputBorder.none,
           prefixIcon: Icon(Icons.search, color: Palette.primaryColor, size: 34),
