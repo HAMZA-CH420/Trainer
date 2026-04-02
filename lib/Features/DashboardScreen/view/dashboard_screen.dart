@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/find_trainer_screen.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/coach_messages_widget.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/progress_widget.dart';
@@ -38,7 +39,14 @@ class DashboardScreen extends StatelessWidget {
                 heightFactor: 3,
                 child: ProgressWidgetButton(
                   btnName: "Find a Trainer",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FindTrainerScreen(),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
