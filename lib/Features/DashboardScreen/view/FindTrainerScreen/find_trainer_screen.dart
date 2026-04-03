@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/invite_friend_screen.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/custom_search_bar.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/discount_and_invite_widget.dart';
 import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/filter_widget.dart';
@@ -18,7 +19,17 @@ class FindTrainerScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 15),
         child: Column(
           spacing: 5,
-          children: [DiscountAndInviteWidget(), TrainerList()],
+          children: [
+            DiscountAndInviteWidget(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => InviteFriendScreen()),
+                );
+              },
+            ),
+            TrainerList(),
+          ],
         ),
       ),
     );
