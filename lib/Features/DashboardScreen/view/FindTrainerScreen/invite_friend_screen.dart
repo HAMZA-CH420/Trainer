@@ -13,7 +13,9 @@ class InviteFriendScreen extends StatelessWidget {
       backgroundColor: Palette.primaryColor,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(Icons.arrow_back, color: Palette.primaryColor),
         ),
         title: DashTitle(title: "Invite People"),
