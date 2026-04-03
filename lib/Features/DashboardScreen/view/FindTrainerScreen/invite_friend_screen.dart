@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
+import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
 class InviteFriendScreen extends StatelessWidget {
   const InviteFriendScreen({super.key});
@@ -7,10 +8,12 @@ class InviteFriendScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Palette.primaryColor,
       appBar: AppBar(
         title: DashTitle(title: "Invite a Friend"),
         centerTitle: true,
       ),
+      body: Container(),
     );
   }
 }
