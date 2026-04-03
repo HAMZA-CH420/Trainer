@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
@@ -17,7 +18,33 @@ class InviteFriendScreen extends StatelessWidget {
         title: DashTitle(title: "Invite People"),
         centerTitle: true,
       ),
-      body: Container(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 10,
+          children: [
+            Text(
+              "Share the Gains, Save on Your Next Course",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+            Text(
+              "Share TrainerHQ with a friend. When they join, you both get 15% off your next course or consultation.",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w400,
+                color: Colors.white,
+                fontSize: 15,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
