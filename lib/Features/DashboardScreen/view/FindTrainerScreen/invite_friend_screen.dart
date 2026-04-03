@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/invite_link_widget.dart';
 import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
@@ -42,6 +43,7 @@ class InviteFriendScreen extends StatelessWidget {
                 fontSize: 15,
               ),
             ),
+            InviteLinkWidget(),
           ],
         ),
       ),
