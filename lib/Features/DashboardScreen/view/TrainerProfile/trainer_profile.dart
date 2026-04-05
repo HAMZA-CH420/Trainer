@@ -6,7 +6,7 @@ class TrainerProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Trainer Profile1"), centerTitle: true),
+      appBar: AppBar(title: Text("Trainer Profile2"), centerTitle: true),
     );
   }
 }
