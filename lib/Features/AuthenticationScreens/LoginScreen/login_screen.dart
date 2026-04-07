@@ -3,13 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/account_login_widget.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/auth_title.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
-import 'package:trainer/Features/BottomNavBar/bottom_nav_bar.dart';
-
 import 'package:trainer/Services/AuthServices/validator.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
+
+import '../../Trainer/BottomNavBar/bottom_nav_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -102,8 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const BottomNavBar(),
+                                    builder: (context) => const BottomNavBar(),
                                   ),
                                   (route) => false,
                                 );
