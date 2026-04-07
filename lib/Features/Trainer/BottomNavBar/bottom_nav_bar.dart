@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:trainer/Features/DashboardScreen/view/dashboard_screen.dart';
-import 'package:trainer/Features/NutritionScreen/view/nutrition_screen.dart';
-import 'package:trainer/Features/ProfileScreen/view/profile_screen.dart';
-import 'package:trainer/Features/ScheduleScreen/view/schedule_screen.dart';
+
 import 'package:trainer/Features/WorkoutScreen/view/workout_screen.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
+
+import '../DashboardScreen/view/dashboard_screen.dart';
+import '../NutritionScreen/view/nutrition_screen.dart';
+import '../ProfileScreen/view/profile_screen.dart';
+import '../ScheduleScreen/view/schedule_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});

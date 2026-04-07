@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/invite_friend_screen.dart';
-import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/custom_search_bar.dart';
-import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/discount_and_invite_widget.dart';
-import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/filter_widget.dart';
-import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/widgets/trainer_list.dart';
-import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
+import 'package:trainer/Features/Trainer/DashboardScreen/view/FindTrainerScreen/widgets/custom_search_bar.dart';
+import 'package:trainer/Features/Trainer/DashboardScreen/view/FindTrainerScreen/widgets/discount_and_invite_widget.dart';
+import 'package:trainer/Features/Trainer/DashboardScreen/view/FindTrainerScreen/widgets/filter_widget.dart';
+import 'package:trainer/Features/Trainer/DashboardScreen/view/FindTrainerScreen/widgets/trainer_list.dart';
 
-import '../../../../UIhelper/colorPalette/color_palette.dart';
+import '../../../../../UIhelper/colorPalette/color_palette.dart';
+import '../../widgets/dash_title.dart';
+import 'invite_friend_screen.dart';
 
 class FindTrainerScreen extends StatelessWidget {
   const FindTrainerScreen({super.key});

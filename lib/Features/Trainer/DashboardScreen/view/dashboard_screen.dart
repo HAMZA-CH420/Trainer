@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trainer/Features/DashboardScreen/view/FindTrainerScreen/find_trainer_screen.dart';
-import 'package:trainer/Features/DashboardScreen/widgets/coach_messages_widget.dart';
-import 'package:trainer/Features/DashboardScreen/widgets/dash_title.dart';
-import 'package:trainer/Features/DashboardScreen/widgets/progress_widget.dart';
-import 'package:trainer/Features/DashboardScreen/widgets/progress_widget_button.dart';
-import 'package:trainer/Features/DashboardScreen/widgets/today_training_widget.dart';
+
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
+
+import '../widgets/coach_messages_widget.dart';
+import '../widgets/dash_title.dart';
+import '../widgets/progress_widget.dart';
+import '../widgets/progress_widget_button.dart';
+import '../widgets/today_training_widget.dart';
+import 'FindTrainerScreen/find_trainer_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
