@@ -3,13 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/common_goals_widget.dart';
+import 'package:trainer/Features/TraineeSide/BottomNavBar/bottom_nav_bar.dart'
+    show BottomNavBar;
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
-
-import '../../Trainerside/BottomNavBar/bottom_nav_bar.dart';
 
 class GoalDescriptionScreen extends StatefulWidget {
   final String userId;

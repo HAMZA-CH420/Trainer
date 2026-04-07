@@ -21,33 +21,51 @@ class _TrainerListState extends State<TrainerList> {
       child: FutureBuilder(
         future: context.watch<DbProvider>().getTrainer(),
         builder: (context, snapshot) {
-          var data = snapshot.data!;
-          return ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Palette.primaryColor,
-                  child: Icon(Icons.person, color: Colors.white, size: 22),
+          var data = snapshot.data;
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text("Unknown Error"));
+          }
+          if (!snapshot.hasData) {
+            return Center(
+              child: Text(
+                "No Trainers Available",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
-                title: Text(
-                  data[index]["userName"],
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+              ),
+            );
+          } else {
+            return ListView.builder(
+              itemCount: data?.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Palette.primaryColor,
+                    child: Icon(Icons.person, color: Colors.white, size: 22),
                   ),
-                ),
-                subtitle: Text("", style: GoogleFonts.poppins(fontSize: 14)),
-                trailing: viewProfile(size, () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TrainerProfile()),
-                  );
-                }),
-              );
-            },
-          );
+                  title: Text(
+                    data?[index]["userName"],
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text("", style: GoogleFonts.poppins(fontSize: 14)),
+                  trailing: viewProfile(size, () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TrainerProfile()),
+                    );
+                  }),
+                );
+              },
+            );
+          }
         },
       ),
     );
