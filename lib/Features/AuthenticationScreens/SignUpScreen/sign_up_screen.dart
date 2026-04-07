@@ -42,7 +42,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     return GestureDetector(
       onTap: () {
         FocusManager.instance.primaryFocus!.unfocus();
