@@ -5,8 +5,7 @@ import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/verification
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/radio_widget.dart';
 
 import 'package:trainer/Services/AuthServices/validator.dart';
-import 'package:trainer/viewModel/Providers/AuthenticationProviders/sign_up_provider.dart';
-
+import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 import '../../../UIhelper/colorPalette/color_palette.dart';
 import '../../../UiHelper/utilities/widgets/custom_primary_button.dart';
 import '../sharedWidgets/account_login_widget.dart';
@@ -115,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
                             String? userId = await context
-                                .read<SignUpProvider>()
+                                .read<DbProvider>()
                                 .createUser(
                                   userName: usernameController.text.trim(),
                                   email: emailController.text.trim(),

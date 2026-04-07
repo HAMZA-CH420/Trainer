@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/common_goals_widget.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
-import 'package:trainer/viewModel/Providers/AuthenticationProviders/sign_up_provider.dart';
+import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
 import '../../Trainer/BottomNavBar/bottom_nav_bar.dart';
@@ -89,7 +89,7 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                   }
 
                   if (finalGoals.isNotEmpty) {
-                    context.read<SignUpProvider>().updateGoals(
+                    context.read<DbProvider>().updateGoals(
                       userId: widget.userId,
                       goals: finalGoals,
                     );
