@@ -52,4 +52,8 @@ class DbProvider extends ChangeNotifier {
     await localDataBase.updateGoals(userId: userId, goals: goals);
     notifyListeners();
   }
+
+  Future<List<Map<String, dynamic>>> getTrainer() async {
+    return await localDataBase.getTrainer();
+  }
 }

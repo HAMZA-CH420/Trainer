@@ -103,4 +103,14 @@ class LocalDataBase {
     );
     return results.isNotEmpty ? results.first : null;
   }
+
+  Future<List<Map<String, dynamic>>> getTrainer() async {
+    var db = await getDb();
+    var results = db.query(
+      "userList",
+      where: "type = ?",
+      whereArgs: ["TRAINER"],
+    );
+    return results;
+  }
 }
