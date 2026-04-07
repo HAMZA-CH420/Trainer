@@ -23,7 +23,7 @@ class LocalDataBase {
 
   Future<Database> openDb() async {
     Directory appDir = await getApplicationDocumentsDirectory();
-    String dirPath = join(appDir.path, "Trainer.db");
+    String dirPath = join(appDir.path, "TrainerSide.db");
     return await openDatabase(
       dirPath,
       onCreate: (db, version) {

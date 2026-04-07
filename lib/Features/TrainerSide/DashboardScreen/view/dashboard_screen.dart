@@ -40,7 +40,7 @@ class DashboardScreen extends StatelessWidget {
               Align(
                 heightFactor: 3,
                 child: ProgressWidgetButton(
-                  btnName: "Find a Trainer",
+                  btnName: "Find a TrainerSide",
                   onTap: () {
                     Navigator.push(
                       context,

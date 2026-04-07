@@ -8,7 +8,8 @@ import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
 import '../../../UIhelper/colorPalette/color_palette.dart';
-import '../../Trainer/BottomNavBar/bottom_nav_bar.dart';
+
+import '../../Trainerside/BottomNavBar/bottom_nav_bar.dart';
 
 class GoalDescriptionScreen extends StatefulWidget {
   final String userId;

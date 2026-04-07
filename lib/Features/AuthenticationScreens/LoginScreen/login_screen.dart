@@ -9,7 +9,7 @@ import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
-import '../../Trainer/BottomNavBar/bottom_nav_bar.dart';
+import '../../TrainerSide/BottomNavBar/bottom_nav_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

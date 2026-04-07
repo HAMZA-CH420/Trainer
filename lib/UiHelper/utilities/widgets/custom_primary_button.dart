@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
+import 'package:trainer/UiHelper/colorPalette/color_palette.dart';
 
 class CustomPrimaryButton extends StatelessWidget {
   const CustomPrimaryButton({

@@ -3,7 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../UiHelper/colorPalette/color_palette.dart';
-import '../../Trainer/BottomNavBar/bottom_nav_bar.dart';
+
+import '../../TrainerSide/BottomNavBar/bottom_nav_bar.dart';
 import '../introProvider/intro_screen.dart';
 
 class SplashScreen extends StatefulWidget {

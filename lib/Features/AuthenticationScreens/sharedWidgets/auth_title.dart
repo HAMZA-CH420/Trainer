@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
+
+import 'package:trainer/UiHelper/colorPalette/color_palette.dart';
 
 class AuthTitle extends StatelessWidget {
   const AuthTitle({
@@ -11,18 +12,20 @@ class AuthTitle extends StatelessWidget {
     required this.onTap,
   });
 
-  final String title, subtitle, postSubtitle;
+  final String title;
+  final String subtitle;
+  final String postSubtitle;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 10,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: GoogleFonts.poppins(fontSize: 25, fontWeight: FontWeight.w600),
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 32),
         ),
         Row(
           children: [
@@ -30,7 +33,7 @@ class AuthTitle extends StatelessWidget {
               subtitle,
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w400,
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
             GestureDetector(
@@ -38,8 +41,8 @@ class AuthTitle extends StatelessWidget {
               child: Text(
                 postSubtitle,
                 style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
                   color: Palette.primaryColor,
                 ),
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trainer/Features/Trainer/DashboardScreen/view/FindTrainerScreen/widgets/invite_link_widget.dart';
+import 'package:trainer/Features/TrainerSide/DashboardScreen/view/FindTrainerScreen/widgets/invite_link_widget.dart';
 
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 

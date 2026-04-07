@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
+import 'package:trainer/UiHelper/colorPalette/color_palette.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
@@ -17,7 +17,7 @@ class CustomTextField extends StatefulWidget {
   final String hint;
   final bool isPass;
   final TextEditingController controller;
-  final FormFieldValidator<String>? validator;
+  final String? Function(String?)? validator;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -37,20 +37,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 18),
         ),
         Container(
+          height: 55,
           alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            color: Color(0xFFEBEDEF),
-            borderRadius: BorderRadius.circular(8),
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          decoration: const BoxDecoration(color: Color(0xFFEBEDEF)),
           child: TextFormField(
-            controller: widget.controller,
             validator: widget.validator,
+            controller: widget.controller,
             obscureText: widget.isPass ? showPass : false,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: widget.hint,
-              hintStyle: TextStyle(fontSize: 13, color: Colors.black45),
+              hintStyle: const TextStyle(fontSize: 13, color: Colors.black45),
               suffixIcon: widget.isPass
                   ? IconButton(
                       onPressed: () {
