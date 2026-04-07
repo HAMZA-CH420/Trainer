@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainer/Features/TrainerSide/DashboardScreen/view/TrainerProfile/trainer_profile.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
 class TrainerList extends StatefulWidget {
@@ -44,7 +45,12 @@ class _TrainerListState extends State<TrainerList> {
               specialization,
               style: GoogleFonts.poppins(fontSize: 14),
             ),
-            trailing: viewProfile(size),
+            trailing: viewProfile(size, () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TrainerProfile()),
+              );
+            }),
           );
         },
         itemCount: dummyTrainerList.length,
@@ -52,22 +58,25 @@ class _TrainerListState extends State<TrainerList> {
     );
   }
 
-  Widget viewProfile(var size) {
-    return Container(
-      alignment: Alignment.center,
+  Widget viewProfile(var size, var onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        alignment: Alignment.center,
 
-      height: size.height * .04,
-      width: size.width * .27,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Palette.primaryColor),
-      ),
-      child: Text(
-        "View Profile",
-        style: GoogleFonts.poppins(
-          fontWeight: FontWeight.w500,
-          fontSize: 13,
-          color: Palette.primaryColor,
+        height: size.height * .04,
+        width: size.width * .27,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Palette.primaryColor),
+        ),
+        child: Text(
+          "View Profile",
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w500,
+            fontSize: 13,
+            color: Palette.primaryColor,
+          ),
         ),
       ),
     );

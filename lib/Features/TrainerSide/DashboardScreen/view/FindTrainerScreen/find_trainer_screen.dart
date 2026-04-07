@@ -42,7 +42,7 @@ class FindTrainerScreen extends StatelessWidget {
         },
         icon: Icon(Icons.arrow_back, color: Palette.primaryColor),
       ),
-      title: DashTitle(title: "Find a TrainerSide"),
+      title: DashTitle(title: "Find a Trainer"),
       centerTitle: true,
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(110),
