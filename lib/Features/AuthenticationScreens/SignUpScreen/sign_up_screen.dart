@@ -25,6 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
 
   final TextEditingController passController = TextEditingController();
+  final TextEditingController confirmPassController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -35,6 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     passController.dispose();
     usernameController.dispose();
     phoneController.dispose();
+    confirmPassController.dispose();
     super.dispose();
   }
 
@@ -46,100 +48,113 @@ class _SignUpScreenState extends State<SignUpScreen> {
         FocusManager.instance.primaryFocus!.unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back, color: Palette.primaryColor, size: 30),
-          ),
-        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              spacing: 25,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AuthTitle(
-                  title: "Create your free account!",
-                  subtitle: "Already have an account? ",
-                  postSubtitle: "Sign In",
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
-                    );
-                  },
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    spacing: 10,
-                    children: [
-                      CustomTextField(
-                        title: "Username",
-                        hint: "i.e Hamza",
-                        controller: usernameController,
-                        validator: (value) =>
-                            FieldValidator.validateUsername(value),
-                      ),
-                      CustomTextField(
-                        title: "E-mail",
-                        hint: "abc@gmail.com",
-                        controller: emailController,
-                        validator: (value) =>
-                            FieldValidator.validateEmail(value),
-                      ),
-                      CustomTextField(
-                        title: "Password",
-                        hint: "1234",
-                        isPass: true,
-                        controller: passController,
-                        validator: (value) =>
-                            FieldValidator.validatePassword(value),
-                      ),
-                      CustomTextField(
-                        title: "Phone Number",
-                        hint: "+92 123456789",
-                        controller: phoneController,
-                        validator: (value) =>
-                            FieldValidator.validatePhoneNumber(value),
-                      ),
-                      AccountLoginWidget(title: "or Connect with"),
-                      RadioWidget(),
-                      SizedBox(height: size.height / 14),
-                      CustomPrimaryButton(
-                        btnName: "Continue",
-                        onTap: () async {
-                          if (_formKey.currentState!.validate()) {
-                            String? userId = await context
-                                .read<DbProvider>()
-                                .createUser(
-                                  userName: usernameController.text.trim(),
-                                  email: emailController.text.trim(),
-                                  password: passController.text.trim(),
-                                  phoneNumber: phoneController.text
-                                      .toString()
-                                      .trim(),
-                                  type: widget.type,
-                                );
-                            if (userId != null) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      VerificationScreen(userId: userId),
-                                ),
-                              );
-                            }
-                          }
-                        },
-                      ),
-                    ],
+            child: SafeArea(
+              child: Column(
+                spacing: 25,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Palette.primaryColor,
+                      size: 30,
+                    ),
                   ),
-                ),
-              ],
+                  AuthTitle(
+                    title: "Create your free account!",
+                    subtitle: "Already have an account? ",
+                    postSubtitle: "Sign In",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
+                  ),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      spacing: 10,
+                      children: [
+                        CustomTextField(
+                          title: "Username",
+                          hint: "i.e Hamza",
+                          controller: usernameController,
+                          validator: (value) =>
+                              FieldValidator.validateUsername(value),
+                        ),
+                        CustomTextField(
+                          title: "E-mail",
+                          hint: "abc@gmail.com",
+                          controller: emailController,
+                          validator: (value) =>
+                              FieldValidator.validateEmail(value),
+                        ),
+                        CustomTextField(
+                          title: "Password",
+                          hint: "1234",
+                          isPass: true,
+                          controller: passController,
+                          validator: (value) =>
+                              FieldValidator.validatePassword(value),
+                        ),
+                        CustomTextField(
+                          title: "Confirm Password",
+                          hint: "1234",
+                          isPass: true,
+                          controller: confirmPassController,
+                          validator: (value) =>
+                              FieldValidator.validatePassword(value),
+                        ),
+                        CustomTextField(
+                          title: "Phone Number",
+                          hint: "+92123456789",
+                          controller: phoneController,
+                          validator: (value) =>
+                              FieldValidator.validatePhoneNumber(value),
+                        ),
+                        AccountLoginWidget(title: "or Connect with"),
+                        RadioWidget(),
+                        CustomPrimaryButton(
+                          btnName: "Continue",
+                          onTap: () async {
+                            if (passController.text.trim() ==
+                                    confirmPassController.text.trim() &&
+                                _formKey.currentState!.validate()) {
+                              String? userId = await context
+                                  .read<DbProvider>()
+                                  .createUser(
+                                    userName: usernameController.text.trim(),
+                                    email: emailController.text.trim(),
+                                    password: passController.text.trim(),
+                                    phoneNumber: phoneController.text
+                                        .toString()
+                                        .trim(),
+                                    type: widget.type,
+                                  );
+                              if (userId != null) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        VerificationScreen(userId: userId),
+                                  ),
+                                );
+                              }
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

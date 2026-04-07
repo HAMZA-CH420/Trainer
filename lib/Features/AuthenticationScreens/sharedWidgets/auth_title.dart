@@ -25,7 +25,7 @@ class AuthTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 32),
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 24),
         ),
         Row(
           children: [
@@ -33,7 +33,7 @@ class AuthTitle extends StatelessWidget {
               subtitle,
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: 15,
               ),
             ),
             GestureDetector(
@@ -42,7 +42,7 @@ class AuthTitle extends StatelessWidget {
                 postSubtitle,
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w600,
-                  fontSize: 16,
+                  fontSize: 15,
                   color: Palette.primaryColor,
                 ),
               ),

@@ -13,6 +13,7 @@ class DbProvider extends ChangeNotifier {
     if (user != null) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString("userId", user['userId']);
+      await prefs.setString("userType", user['type']);
       await prefs.setBool("userLogged", true);
       return true;
     }
@@ -39,6 +40,7 @@ class DbProvider extends ChangeNotifier {
     if (userId != null) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString("userId", userId);
+      await prefs.setString("userType", type);
       await prefs.setBool("userLogged", true);
     }
 
