@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/trainer_profile.dart'
-    show TrainerProfile;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/trainer_profile.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
@@ -17,6 +17,7 @@ class _TrainerListState extends State<TrainerList> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
+
     return Expanded(
       child: FutureBuilder(
         future: context.watch<DbProvider>().getTrainer(),
@@ -42,6 +43,9 @@ class _TrainerListState extends State<TrainerList> {
             return ListView.builder(
               itemCount: data?.length,
               itemBuilder: (context, index) {
+                if (data?[index]["userId"] == checkUser()) {
+                  return SizedBox.shrink();
+                }
                 return ListTile(
                   leading: CircleAvatar(
                     radius: 30,
@@ -93,5 +97,11 @@ class _TrainerListState extends State<TrainerList> {
         ),
       ),
     );
+  }
+
+  Future<String?> checkUser() async {
+    var pref = await SharedPreferences.getInstance();
+    var isCurrentUser = pref.getString("userId");
+    return isCurrentUser;
   }
 }
