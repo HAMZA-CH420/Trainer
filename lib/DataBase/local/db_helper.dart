@@ -21,7 +21,7 @@ class LocalDataBase {
     }
   }
 
-  // a commit is needed here to push changes
+  // a commit is needed here to push changes to
   Future<Database> openDb() async {
     Directory appDir = await getApplicationDocumentsDirectory();
     String dirPath = join(appDir.path, "Trainer.db");
