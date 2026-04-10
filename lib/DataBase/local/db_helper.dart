@@ -45,7 +45,7 @@ class LocalDataBase {
   }) async {
     String userId =
         "${userName.toLowerCase().replaceAll(' ', '_')}_${DateTime.now().millisecondsSinceEpoch}";
-    //8888
+
     var db = await getDb();
     int rowsAffected = await db.insert("userList", {
       "userName": userName,
