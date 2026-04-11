@@ -47,6 +47,7 @@ class DbProvider extends ChangeNotifier {
     return userId;
   }
 
+  //hamza is a fucking loser
   void updateGoals({
     required String userId,
     required List<String> goals,
