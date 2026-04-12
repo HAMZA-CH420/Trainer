@@ -60,5 +60,21 @@ class DbProvider extends ChangeNotifier {
   }
 
   ///add trainer profile
-  void addTrainerProfile() {}
+  void addTrainerProfile({
+    required String userId,
+    required String about,
+    required String specialization,
+    required String experience,
+    required String hourlyRate,
+    required double rating,
+  }) async {
+    await localDataBase.addTrainerProfile(
+      userId: userId,
+      about: about,
+      specialization: specialization,
+      experience: experience,
+      hourlyRate: hourlyRate,
+      rating: rating,
+    );
+  }
 }
