@@ -21,20 +21,23 @@ class LocalDataBase {
     }
   }
 
+  /// open a new database if there is not one present
   Future<Database> openDb() async {
     Directory appDir = await getApplicationDocumentsDirectory();
     String dirPath = join(appDir.path, "Trainer.db");
     return await openDatabase(
       dirPath,
-      onCreate: (db, version) {
-        db.execute(
+      onCreate: (db, version) async {
+        await db.execute(
           "create table userList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text,type text,userId text)",
         );
+        await db.execute("create table trainerProfile(id )");
       },
       version: 1,
     );
   }
 
+  ///add a new user in the table
   Future<String?> newUser({
     required String userName,
     required String email,
@@ -58,6 +61,7 @@ class LocalDataBase {
     return rowsAffected > 0 ? userId : null;
   }
 
+  ///update goals filed in the table
   Future<bool> updateGoals({
     required String userId,
     required List<String> goals,
@@ -74,6 +78,7 @@ class LocalDataBase {
     return count > 0;
   }
 
+  ///retrieve goals from the data base
   Future<List<String>> getGoals(String userId) async {
     var db = await getDb();
     var maps = await db.query(
@@ -90,7 +95,7 @@ class LocalDataBase {
     return [];
   }
 
-  //login validation
+  ///login validation
   Future<Map<String, dynamic>?> loginUser({
     required String email,
     required String password,
