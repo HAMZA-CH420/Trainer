@@ -91,6 +91,13 @@ class LocalDataBase {
     return rowsAffected > 0;
   }
 
+  ///Retrieve trainers profile from the database
+  Future<List<Map<String, dynamic>>> getTrainerProfile() async {
+    var db = await getDb();
+    var result = await db.query("trainerProfile");
+    return result;
+  }
+
   ///update goals filed in the table
   Future<bool> updateGoals({
     required String userId,
