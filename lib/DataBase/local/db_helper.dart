@@ -31,9 +31,18 @@ class LocalDataBase {
         await db.execute(
           "create table userList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text,type text,userId text)",
         );
-        await db.execute("create table trainerProfile(id )");
+        await db.execute(
+          "create table trainerProfile(id integer primary key autoincrement, userId text, about text,specialization text, experience text, hourlyRate text,rating real)",
+        );
       },
-      version: 1,
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await db.execute(
+            "create table trainerProfile(id integer primary key autoincrement, userId text, bio text, specialization text, experience text, rating real, hourlyRate text)",
+          );
+        }
+      },
+      version: 2,
     );
   }
 
@@ -59,6 +68,27 @@ class LocalDataBase {
       "type": type,
     });
     return rowsAffected > 0 ? userId : null;
+  }
+
+  ///add trainers profile in the table
+  Future<bool?> addTrainerProfile({
+    required String userId,
+    required String about,
+    required String specialization,
+    required String experience,
+    required String hourlyRate,
+    required double rating,
+  }) async {
+    var db = await getDb();
+    int rowsAffected = await db.insert("trainerProfile", {
+      "userId": userId,
+      "about": about,
+      "specialization": specialization,
+      "experience": experience,
+      "hourlyRate": hourlyRate,
+      "rating": rating,
+    });
+    return rowsAffected > 0;
   }
 
   ///update goals filed in the table
