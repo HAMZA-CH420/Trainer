@@ -6,9 +6,14 @@ import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 
 class VerificationScreen extends StatelessWidget {
-  const VerificationScreen({super.key, required this.userId});
+  const VerificationScreen({
+    super.key,
+    required this.userId,
+    required this.phone,
+  });
 
   final String userId;
+  final String phone;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +51,7 @@ class VerificationScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Sent to +62 875 875 098",
+                  "Sent to $phone",
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w400,
                     fontSize: 14,

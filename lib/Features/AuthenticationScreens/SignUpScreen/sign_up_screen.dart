@@ -141,8 +141,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        VerificationScreen(userId: userId),
+                                    builder: (context) => VerificationScreen(
+                                      userId: userId,
+                                      phone: phoneController.text.toString(),
+                                    ),
                                   ),
                                 );
                               }
