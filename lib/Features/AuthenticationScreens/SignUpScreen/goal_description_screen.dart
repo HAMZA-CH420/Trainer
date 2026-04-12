@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/add_trainer_profile_screen.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/common_goals_widget.dart';
 import 'package:trainer/Features/TraineeSide/BottomNavBar/bottom_nav_bar.dart'
     show BottomNavBar;
@@ -83,7 +84,7 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
               const SizedBox(height: 20),
               CustomPrimaryButton(
                 btnName: "Finish",
-                onTap: () {
+                onTap: () async {
                   List<String> finalGoals = List.from(selectedGoals);
                   if (controller.text.trim().isNotEmpty) {
                     finalGoals.add(controller.text.trim());
@@ -94,18 +95,27 @@ class _GoalDescriptionScreenState extends State<GoalDescriptionScreen> {
                       userId: widget.userId,
                       goals: finalGoals,
                     );
-                    var pref = SharedPreferences.getInstance();
-                    pref.then((value) {
-                      value.setBool("userLogged", true);
-                    });
+                    var pref = await SharedPreferences.getInstance();
 
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const BottomNavBar(),
-                      ),
-                      (route) => false,
-                    );
+                    pref.setBool("userLogged", true);
+
+                    if (pref.getString("userType") == "TRAINEE") {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const BottomNavBar(),
+                        ),
+                        (route) => false,
+                      );
+                    } else {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AddTrainerProfileScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    }
                     ToastMessage.showToast(
                       message: "Account creation successful.",
                       isError: false,
