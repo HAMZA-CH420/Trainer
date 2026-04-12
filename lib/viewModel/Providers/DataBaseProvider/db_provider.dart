@@ -77,4 +77,9 @@ class DbProvider extends ChangeNotifier {
       rating: rating,
     );
   }
+
+  ///get trainers in a list
+  Future<List<Map<String, dynamic>>> getTrainerProfiles() async {
+    return await localDataBase.getTrainerProfile();
+  }
 }
