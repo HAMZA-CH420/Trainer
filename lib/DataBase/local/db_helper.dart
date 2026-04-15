@@ -71,7 +71,7 @@ class LocalDataBase {
     return rowsAffected > 0 ? userId : null;
   }
 
-  ///add trainers profile in the table haha
+  ///add trainers profile in the table
   Future<bool?> addTrainerProfile({
     required String userId,
     required String about,
