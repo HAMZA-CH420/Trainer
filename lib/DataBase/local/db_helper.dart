@@ -47,7 +47,7 @@ class LocalDataBase {
     );
   }
 
-  ///add a new user in the table
+  ///add a new user in the table mmmmm
   Future<String?> newUser({
     required String userName,
     required String email,
