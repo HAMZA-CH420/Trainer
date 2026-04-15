@@ -12,6 +12,7 @@ class LocalDataBase {
 
   Database? db;
 
+  ///check whether if the database is present
   Future<Database> getDb() async {
     if (db != null) {
       return db!;
