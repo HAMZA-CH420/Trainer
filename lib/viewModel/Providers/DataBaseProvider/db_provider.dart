@@ -62,6 +62,7 @@ class DbProvider extends ChangeNotifier {
   ///add trainer profile
   void addTrainerProfile({
     required String userId,
+    required String username,
     required String about,
     required String specialization,
     required String experience,
@@ -69,6 +70,7 @@ class DbProvider extends ChangeNotifier {
     required double rating,
   }) async {
     await localDataBase.addTrainerProfile(
+      userName: username,
       userId: userId,
       about: about,
       specialization: specialization,

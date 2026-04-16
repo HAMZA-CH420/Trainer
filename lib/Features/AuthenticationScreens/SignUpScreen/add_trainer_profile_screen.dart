@@ -39,6 +39,11 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
               hint: "Your Name",
               controller: nameController,
             ),
+            CustomTextField(
+              title: "Specialization",
+              hint: "i.e Strength trainer",
+              controller: nameController,
+            ),
           ],
         ),
       ),

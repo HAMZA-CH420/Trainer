@@ -39,7 +39,7 @@ class LocalDataBase {
       onUpgrade: (db, oldVersion, newVersion) async {
         if (oldVersion < 2) {
           await db.execute(
-            "create table trainerProfile(id integer primary key autoincrement, userId text, bio text, specialization text, experience text, rating real, hourlyRate text)",
+            "create table trainerProfile(id integer primary key autoincrement, userName text,userId text, bio text, specialization text, experience text, rating real, hourlyRate text)",
           );
         }
       },
@@ -74,6 +74,7 @@ class LocalDataBase {
   ///add trainers profile in the table
   Future<bool?> addTrainerProfile({
     required String userId,
+    required String userName,
     required String about,
     required String specialization,
     required String experience,
@@ -83,6 +84,7 @@ class LocalDataBase {
     var db = await getDb();
     int rowsAffected = await db.insert("trainerProfile", {
       "userId": userId,
+      "userName": userName,
       "about": about,
       "specialization": specialization,
       "experience": experience,
