@@ -27,38 +27,40 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: Palette.primaryColor,
-              child: Icon(
-                Icons.add_a_photo_outlined,
-                color: Colors.white,
-                size: 38,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundColor: Palette.primaryColor,
+                child: Icon(
+                  Icons.add_a_photo_outlined,
+                  color: Colors.white,
+                  size: 38,
+                ),
               ),
-            ),
-            CustomTextField(
-              title: "Name",
-              hint: "Your Name",
-              controller: nameController,
-            ),
-            CustomTextField(
-              title: "Specialization",
-              hint: "i.e Strength trainer",
-              controller: specController,
-            ),
-            CustomTextField(
-              title: "Experience",
-              hint: "time in years",
-              controller: expController,
-            ),
-            DescriptionWidget(
-              title: "About",
-              hint: "write about yourself",
-              controller: descController,
-            ),
-          ],
+              CustomTextField(
+                title: "Name",
+                hint: "Your Name",
+                controller: nameController,
+              ),
+              CustomTextField(
+                title: "Specialization",
+                hint: "i.e Strength trainer",
+                controller: specController,
+              ),
+              CustomTextField(
+                title: "Experience",
+                hint: "time in years",
+                controller: expController,
+              ),
+              DescriptionWidget(
+                title: "About",
+                hint: "write about yourself",
+                controller: descController,
+              ),
+            ],
+          ),
         ),
       ),
     );
