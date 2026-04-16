@@ -33,7 +33,6 @@ class _CustomTextFieldState extends State<DescriptionWidget> {
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 18),
         ),
         Container(
-          height: 55,
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(horizontal: 10),
           decoration: const BoxDecoration(color: Color(0xFFEBEDEF)),
