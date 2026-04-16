@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
+import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/description_widget.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
@@ -15,6 +16,7 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController specController = TextEditingController();
   TextEditingController expController = TextEditingController();
+  TextEditingController descController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,11 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
               title: "Experience",
               hint: "time in years",
               controller: expController,
+            ),
+            DescriptionWidget(
+              title: "About",
+              hint: "write about yourself",
+              controller: descController,
             ),
           ],
         ),
