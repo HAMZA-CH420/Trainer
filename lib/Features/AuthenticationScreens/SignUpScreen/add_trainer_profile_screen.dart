@@ -13,6 +13,7 @@ class AddTrainerProfileScreen extends StatefulWidget {
 
 class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
   TextEditingController nameController = TextEditingController();
+  TextEditingController specController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
             CustomTextField(
               title: "Specialization",
               hint: "i.e Strength trainer",
-              controller: nameController,
+              controller: specController,
             ),
           ],
         ),
