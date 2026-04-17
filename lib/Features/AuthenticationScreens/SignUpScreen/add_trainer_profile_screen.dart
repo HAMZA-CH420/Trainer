@@ -4,8 +4,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/description_widget.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
+import 'package:trainer/Features/TrainerSide/TrainerDashboardScreen/trainer_dashboard_screen.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
+import 'package:trainer/UiHelper/utilities/widgets/toast_message.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
 class AddTrainerProfileScreen extends StatefulWidget {
@@ -29,7 +31,7 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
     specController.dispose();
     expController.dispose();
     descController.dispose();
-    FocusManager.instance.primaryFocus!.unfocus();
+    rateController.dispose();
     super.dispose();
   }
 
@@ -53,7 +55,7 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
                 CircleAvatar(
                   radius: 50,
                   backgroundColor: Palette.primaryColor,
-                  child: Icon(
+                  child: const Icon(
                     Icons.add_a_photo_outlined,
                     color: Colors.white,
                     size: 38,
@@ -84,22 +86,66 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
                   hint: "write about yourself",
                   controller: descController,
                 ),
+                const SizedBox(height: 20),
                 CustomPrimaryButton(
                   btnName: "Upload",
                   onTap: () async {
+                    if (nameController.text.isEmpty ||
+                        specController.text.isEmpty ||
+                        expController.text.isEmpty ||
+                        rateController.text.isEmpty ||
+                        descController.text.isEmpty) {
+                      ToastMessage.showToast(
+                        message: "Please fill all fields",
+                        isError: true,
+                      );
+                      return;
+                    }
+
                     final pref = await SharedPreferences.getInstance();
                     var userId = pref.getString("userId");
-                    context.read<DbProvider>().addTrainerProfile(
-                      userId: userId.toString(),
-                      username: nameController.text,
-                      about: descController.text,
-                      specialization: specController.text,
-                      experience: expController.text,
-                      hourlyRate: rateController.text,
-                      rating: 0.0,
-                    );
+                    
+                    if (userId == null) {
+                       ToastMessage.showToast(
+                        message: "User session expired. Please login again.",
+                        isError: true,
+                      );
+                      return;
+                    }
+
+                    bool saved = await context.read<DbProvider>().addTrainerProfile(
+                          userId: userId,
+                          username: nameController.text.trim(),
+                          about: descController.text.trim(),
+                          specialization: specController.text.trim(),
+                          experience: expController.text.trim(),
+                          hourlyRate: rateController.text.trim(),
+                          rating: 0.0,
+                        );
+
+                    if (saved) {
+                      if (mounted) {
+                        ToastMessage.showToast(
+                          message: "Profile updated successfully",
+                          isError: false,
+                        );
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const TrainerDashboardScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      }
+                    } else {
+                      ToastMessage.showToast(
+                        message: "Failed to update profile",
+                        isError: true,
+                      );
+                    }
                   },
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

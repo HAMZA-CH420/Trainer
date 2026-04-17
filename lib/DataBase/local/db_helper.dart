@@ -91,7 +91,7 @@ class LocalDataBase {
       "hourlyRate": hourlyRate,
       "rating": rating,
     });
-    return rowsAffected > 0;
+    return rowsAffected > 0 ? true : false;
   }
 
   ///Retrieve trainers profile from the database

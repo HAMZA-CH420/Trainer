@@ -58,7 +58,7 @@ class DbProvider extends ChangeNotifier {
   }
 
   ///add trainer profile
-  void addTrainerProfile({
+  Future<bool> addTrainerProfile({
     required String userId,
     required String username,
     required String about,
@@ -67,7 +67,7 @@ class DbProvider extends ChangeNotifier {
     required String hourlyRate,
     required double rating,
   }) async {
-    await _localDataBase.addTrainerProfile(
+    bool? result = await _localDataBase.addTrainerProfile(
       userName: username,
       userId: userId,
       about: about,
@@ -76,6 +76,7 @@ class DbProvider extends ChangeNotifier {
       hourlyRate: hourlyRate,
       rating: rating,
     );
+    return result!;
   }
 
   ///get trainers in a list
