@@ -3,6 +3,7 @@ import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/description_widget.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
+import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 
 class AddTrainerProfileScreen extends StatefulWidget {
   const AddTrainerProfileScreen({super.key});
@@ -59,6 +60,7 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
                 hint: "write about yourself",
                 controller: descController,
               ),
+              CustomPrimaryButton(btnName: "Upload", onTap: () {}),
             ],
           ),
         ),
