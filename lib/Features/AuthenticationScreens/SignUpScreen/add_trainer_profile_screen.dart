@@ -30,6 +30,7 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
           child: Column(
+            spacing: 15,
             children: [
               CircleAvatar(
                 radius: 50,

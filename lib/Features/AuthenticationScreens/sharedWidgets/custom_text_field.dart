@@ -40,7 +40,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           height: 55,
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          decoration: const BoxDecoration(color: Color(0xFFEBEDEF)),
+          decoration: BoxDecoration(
+            color: const Color(0xFFEBEDEF),
+            borderRadius: BorderRadius.circular(8),
+          ),
           child: TextFormField(
             validator: widget.validator,
             controller: widget.controller,
