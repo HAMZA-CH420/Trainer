@@ -35,11 +35,14 @@ class _CustomTextFieldState extends State<DescriptionWidget> {
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          decoration: const BoxDecoration(color: Color(0xFFEBEDEF)),
+          decoration: BoxDecoration(
+            color: Color(0xFFEBEDEF),
+            borderRadius: BorderRadius.circular(8),
+          ),
           child: TextFormField(
             validator: widget.validator,
             controller: widget.controller,
-            maxLines: 8,
+            maxLines: 6,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: widget.hint,

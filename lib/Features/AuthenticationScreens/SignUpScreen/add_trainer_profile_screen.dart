@@ -20,49 +20,69 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
   TextEditingController descController = TextEditingController();
 
   @override
+  void dispose() {
+    nameController.dispose();
+    specController.dispose();
+    expController.dispose();
+    descController.dispose();
+    FocusManager.instance.primaryFocus!.unfocus();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: DashTitle(title: "Update Profile"),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            spacing: 15,
-            children: [
-              CircleAvatar(
-                radius: 50,
-                backgroundColor: Palette.primaryColor,
-                child: Icon(
-                  Icons.add_a_photo_outlined,
-                  color: Colors.white,
-                  size: 38,
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus!.unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: DashTitle(title: "Update Profile"),
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: 15,
+              children: [
+                CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Palette.primaryColor,
+                  child: Icon(
+                    Icons.add_a_photo_outlined,
+                    color: Colors.white,
+                    size: 38,
+                  ),
                 ),
-              ),
-              CustomTextField(
-                title: "Name",
-                hint: "Your Name",
-                controller: nameController,
-              ),
-              CustomTextField(
-                title: "Specialization",
-                hint: "i.e Strength trainer",
-                controller: specController,
-              ),
-              CustomTextField(
-                title: "Experience",
-                hint: "time in years",
-                controller: expController,
-              ),
-              DescriptionWidget(
-                title: "About",
-                hint: "write about yourself",
-                controller: descController,
-              ),
-              CustomPrimaryButton(btnName: "Upload", onTap: () {}),
-            ],
+                CustomTextField(
+                  title: "Name",
+                  hint: "Your Name",
+                  controller: nameController,
+                ),
+                CustomTextField(
+                  title: "Specialization",
+                  hint: "i.e Strength trainer",
+                  controller: specController,
+                ),
+                CustomTextField(
+                  title: "Experience",
+                  hint: "time in years",
+                  controller: expController,
+                ),
+                CustomTextField(
+                  title: "Hourly Rate",
+                  hint: "i.e 20\$",
+                  controller: expController,
+                ),
+                DescriptionWidget(
+                  title: "About",
+                  hint: "write about yourself",
+                  controller: descController,
+                ),
+                CustomPrimaryButton(btnName: "Upload", onTap: () {}),
+              ],
+            ),
           ),
         ),
       ),
