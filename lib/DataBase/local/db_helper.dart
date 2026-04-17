@@ -33,7 +33,7 @@ class LocalDataBase {
           "create table userList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text,type text,userId text)",
         );
         await db.execute(
-          "create table trainerProfile(id integer primary key autoincrement, userId text, about text,specialization text, experience text, hourlyRate text,rating real)",
+          "create table trainerProfile(id integer primary key autoincrement, userName text,userId text, about text,specialization text, experience text, hourlyRate text,rating real)",
         );
       },
       onUpgrade: (db, oldVersion, newVersion) async {
