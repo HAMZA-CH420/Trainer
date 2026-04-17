@@ -159,4 +159,10 @@ class LocalDataBase {
     );
     return results;
   }
+
+  ///delete a user
+  void deleteUser(String userId) async {
+    var db = await getDb();
+    await db.delete("userList", where: "userId = ?", whereArgs: [userId]);
+  }
 }
