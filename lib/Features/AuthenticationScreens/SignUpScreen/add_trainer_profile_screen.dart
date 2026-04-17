@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/custom_text_field.dart';
 import 'package:trainer/Features/AuthenticationScreens/sharedWidgets/description_widget.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
+import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
 class AddTrainerProfileScreen extends StatefulWidget {
   const AddTrainerProfileScreen({super.key});
@@ -80,7 +83,22 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
                   hint: "write about yourself",
                   controller: descController,
                 ),
-                CustomPrimaryButton(btnName: "Upload", onTap: () {}),
+                CustomPrimaryButton(
+                  btnName: "Upload",
+                  onTap: () async {
+                    final pref = await SharedPreferences.getInstance();
+                    var userId = pref.getString("userId");
+                    context.read<DbProvider>().addTrainerProfile(
+                      userId: userId.toString(),
+                      username: "",
+                      about: "",
+                      specialization: "",
+                      experience: "",
+                      hourlyRate: "",
+                      rating: 0.0,
+                    );
+                  },
+                ),
               ],
             ),
           ),

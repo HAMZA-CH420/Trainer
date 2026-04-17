@@ -3,13 +3,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/DataBase/local/db_helper.dart';
 
 class DbProvider extends ChangeNotifier {
-  LocalDataBase db = LocalDataBase.getInstance();
+  final LocalDataBase _localDataBase = LocalDataBase.getInstance();
 
   Future<bool> loginUser({
     required String email,
     required String password,
   }) async {
-    var user = await db.loginUser(email: email, password: password);
+    var user = await _localDataBase.loginUser(email: email, password: password);
     if (user != null) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString("userId", user['userId']);
@@ -20,8 +20,6 @@ class DbProvider extends ChangeNotifier {
     return false;
   }
 
-  LocalDataBase localDataBase = LocalDataBase.getInstance();
-
   Future<String?> createUser({
     required String userName,
     required String email,
@@ -29,7 +27,7 @@ class DbProvider extends ChangeNotifier {
     required String phoneNumber,
     required String type,
   }) async {
-    String? userId = await localDataBase.newUser(
+    String? userId = await _localDataBase.newUser(
       userName: userName,
       email: email,
       password: password,
@@ -51,12 +49,12 @@ class DbProvider extends ChangeNotifier {
     required String userId,
     required List<String> goals,
   }) async {
-    await localDataBase.updateGoals(userId: userId, goals: goals);
+    await _localDataBase.updateGoals(userId: userId, goals: goals);
     notifyListeners();
   }
 
   Future<List<Map<String, dynamic>>> getTrainer() async {
-    return await localDataBase.getTrainer();
+    return await _localDataBase.getTrainer();
   }
 
   ///add trainer profile
@@ -69,7 +67,7 @@ class DbProvider extends ChangeNotifier {
     required String hourlyRate,
     required double rating,
   }) async {
-    await localDataBase.addTrainerProfile(
+    await _localDataBase.addTrainerProfile(
       userName: username,
       userId: userId,
       about: about,
@@ -82,6 +80,6 @@ class DbProvider extends ChangeNotifier {
 
   ///get trainers in a list
   Future<List<Map<String, dynamic>>> getTrainerProfiles() async {
-    return await localDataBase.getTrainerProfile();
+    return await _localDataBase.getTrainerProfile();
   }
 }
