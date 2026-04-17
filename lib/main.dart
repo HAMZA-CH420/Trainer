@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:trainer/Features/AuthenticationScreens/SignUpScreen/add_trainer_profile_screen.dart';
 import 'package:trainer/Features/OnboardingScreens/splashScreen/splash_screen.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: AddTrainerProfileScreen(),
+      home: SplashScreen(),
     );
   }
 }
