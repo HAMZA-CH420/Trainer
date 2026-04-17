@@ -21,6 +21,7 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
   TextEditingController specController = TextEditingController();
   TextEditingController expController = TextEditingController();
   TextEditingController descController = TextEditingController();
+  TextEditingController rateController = TextEditingController();
 
   @override
   void dispose() {
@@ -76,7 +77,7 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
                 CustomTextField(
                   title: "Hourly Rate",
                   hint: "i.e 20\$",
-                  controller: expController,
+                  controller: rateController,
                 ),
                 DescriptionWidget(
                   title: "About",
@@ -90,11 +91,11 @@ class _AddTrainerProfileScreenState extends State<AddTrainerProfileScreen> {
                     var userId = pref.getString("userId");
                     context.read<DbProvider>().addTrainerProfile(
                       userId: userId.toString(),
-                      username: "",
-                      about: "",
-                      specialization: "",
-                      experience: "",
-                      hourlyRate: "",
+                      username: nameController.text,
+                      about: descController.text,
+                      specialization: specController.text,
+                      experience: expController.text,
+                      hourlyRate: rateController.text,
                       rating: 0.0,
                     );
                   },
