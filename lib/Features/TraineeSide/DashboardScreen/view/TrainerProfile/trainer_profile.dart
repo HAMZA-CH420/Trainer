@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_about.dart';
+import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_calendar.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_personal_info.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
 
@@ -50,6 +51,7 @@ class _TrainerProfileState extends State<TrainerProfile> {
                 ),
               ),
               TrainerAbout(about: widget.about),
+              TrainerCalendar(),
             ],
           ),
         ),
