@@ -69,7 +69,14 @@ class _TrainerListState extends State<TrainerList> {
                   trailing: viewProfile(size, () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TrainerProfile()),
+                      MaterialPageRoute(
+                        builder: (context) => TrainerProfile(
+                          specialization: data?[index]["specialization"],
+                          name: data?[index]["userName"],
+                          experience: data?[index]["experience"],
+                          about: data?[index]["about"],
+                        ),
+                      ),
                     );
                   }),
                 );
