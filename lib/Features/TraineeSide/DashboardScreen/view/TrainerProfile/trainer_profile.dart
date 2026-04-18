@@ -3,6 +3,7 @@ import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_calendar.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_personal_info.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
+import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
 
 import '../../../../../UIhelper/colorPalette/color_palette.dart';
 
@@ -37,7 +38,7 @@ class _TrainerProfileState extends State<TrainerProfile> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: Column(
             spacing: 20,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,6 +53,7 @@ class _TrainerProfileState extends State<TrainerProfile> {
               ),
               TrainerAbout(about: widget.about),
               TrainerCalendar(),
+              CustomPrimaryButton(btnName: "Book", onTap: () {}),
             ],
           ),
         ),
