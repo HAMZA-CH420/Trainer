@@ -7,8 +7,15 @@ import 'package:trainer/Features/TraineeSide/DashboardScreen/view/FindTrainerScr
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
 import 'package:trainer/UiHelper/colorPalette/color_palette.dart';
 
-class FindTrainerScreen extends StatelessWidget {
+class FindTrainerScreen extends StatefulWidget {
   const FindTrainerScreen({super.key});
+
+  @override
+  State<FindTrainerScreen> createState() => _FindTrainerScreenState();
+}
+
+class _FindTrainerScreenState extends State<FindTrainerScreen> {
+  String searchQuery = "";
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +30,11 @@ class FindTrainerScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => InviteFriendScreen()),
+                  MaterialPageRoute(builder: (context) => const InviteFriendScreen()),
                 );
               },
             ),
-            TrainerList(),
+            TrainerList(searchQuery: searchQuery),
           ],
         ),
       ),
@@ -45,14 +52,20 @@ class FindTrainerScreen extends StatelessWidget {
       title: DashTitle(title: "Find a Trainer"),
       centerTitle: true,
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(110),
+        preferredSize: const Size.fromHeight(110),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             spacing: 20,
             children: [
-              CustomSearchBar(onChanged: (query) {}),
-              FilterWidget(),
+              CustomSearchBar(
+                onChanged: (query) {
+                  setState(() {
+                    searchQuery = query;
+                  });
+                },
+              ),
+              const FilterWidget(),
             ],
           ),
         ),
