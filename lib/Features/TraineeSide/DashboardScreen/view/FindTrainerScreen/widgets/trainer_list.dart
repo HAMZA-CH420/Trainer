@@ -60,10 +60,10 @@ class _TrainerListState extends State<TrainerList> {
                     ),
                   ),
                   subtitle: Text(
-                    data?[index]["userName"],
+                    data?[index]["specialization"],
                     style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   trailing: viewProfile(size, () {

@@ -125,7 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         CustomPrimaryButton(
                           btnName: "Continue",
                           onTap: () async {
-                            if (passController.text.trim() ==
+                            if (passController.text.trim() !=
                                 confirmPassController.text.trim()) {
                               ToastMessage.showToast(
                                 message: "Passwords do not match",
