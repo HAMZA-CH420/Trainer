@@ -30,20 +30,22 @@ class LocalDataBase {
       dirPath,
       onCreate: (db, version) async {
         await db.execute(
-          "create table userList(id integer primary key autoincrement, userName text, email text,password text, phoneNumber text,goals text,type text,userId text)",
+          "create table userList(id integer primary key autoincrement, userName text, email text, password text, phoneNumber text, goals text, type text, userId text)",
         );
         await db.execute(
-          "create table trainerProfile(id integer primary key autoincrement, userName text,userId text, about text,specialization text, experience text, hourlyRate text,rating real)",
+          "create table trainerProfile(id integer primary key autoincrement, userName text, userId text, about text, specialization text, experience text, hourlyRate text, rating real)",
         );
       },
       onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < 2) {
+        if (oldVersion < 3) {
+          // Drop and recreate to ensure clean schema for development
+          await db.execute("DROP TABLE IF EXISTS trainerProfile");
           await db.execute(
-            "create table trainerProfile(id integer primary key autoincrement, userName text,userId text, bio text, specialization text, experience text, rating real, hourlyRate text)",
+            "create table trainerProfile(id integer primary key autoincrement, userName text, userId text, about text, specialization text, experience text, hourlyRate text, rating real)",
           );
         }
       },
-      version: 2,
+      version: 3, // Increased version to 3
     );
   }
 
@@ -53,7 +55,6 @@ class LocalDataBase {
     required String email,
     required String password,
     required String phoneNumber,
-
     required String type,
   }) async {
     String userId =
@@ -83,8 +84,8 @@ class LocalDataBase {
   }) async {
     var db = await getDb();
     int rowsAffected = await db.insert("trainerProfile", {
-      "userId": userId,
       "userName": userName,
+      "userId": userId,
       "about": about,
       "specialization": specialization,
       "experience": experience,
@@ -97,8 +98,7 @@ class LocalDataBase {
   ///Retrieve trainers profile from the database
   Future<List<Map<String, dynamic>>> getTrainerProfile() async {
     var db = await getDb();
-    var result = await db.query("trainerProfile");
-    return result;
+    return await db.query("trainerProfile");
   }
 
   ///update goals filed in the table
@@ -152,12 +152,11 @@ class LocalDataBase {
   ///get all the users registered as trainers
   Future<List<Map<String, dynamic>>> getTrainer() async {
     var db = await getDb();
-    var results = db.query(
+    return await db.query(
       "userList",
       where: "type = ?",
       whereArgs: ["TRAINER"],
     );
-    return results;
   }
 
   ///delete a user

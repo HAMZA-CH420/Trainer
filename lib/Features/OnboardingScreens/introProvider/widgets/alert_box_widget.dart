@@ -28,21 +28,18 @@ class _AlertBoxWidgetState extends State<AlertBoxWidget> {
                 setState(() {
                   selectedIndex = index;
                 });
-                final navigatePop = Navigator.pop(context);
-                final navigateNext = Navigator.push(
+         
+                Navigator.pop(context);
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => SignUpScreen(type: content[index]),
                   ),
                 );
-                Future.delayed(Duration(seconds: 1), () {
-                  navigatePop;
-                  navigateNext;
-                });
               },
               child: Container(
                 height: size.height / 12,
-                margin: EdgeInsets.symmetric(vertical: 5),
+                margin: const EdgeInsets.symmetric(vertical: 5),
                 decoration: BoxDecoration(
                   color: isSelected ? Palette.primaryColor : Colors.white,
                   borderRadius: BorderRadius.circular(5),
