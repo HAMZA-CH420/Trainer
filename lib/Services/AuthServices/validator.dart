@@ -4,6 +4,9 @@ class FieldValidator {
     if (value == null || value.isEmpty) {
       return 'Email is required';
     }
+    if (!value.contains("@gmail.com")) {
+      return 'Please enter a valid email';
+    }
     final emailRegExp = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegExp.hasMatch(value)) {
       return 'Please enter a valid email';
