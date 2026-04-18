@@ -20,7 +20,7 @@ class _TrainerListState extends State<TrainerList> {
 
     return Expanded(
       child: FutureBuilder(
-        future: context.watch<DbProvider>().getTrainer(),
+        future: context.watch<DbProvider>().getTrainerProfiles(),
         builder: (context, snapshot) {
           var data = snapshot.data;
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -59,7 +59,13 @@ class _TrainerListState extends State<TrainerList> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  subtitle: Text("", style: GoogleFonts.poppins(fontSize: 14)),
+                  subtitle: Text(
+                    data?[index]["userName"],
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   trailing: viewProfile(size, () {
                     Navigator.push(
                       context,
