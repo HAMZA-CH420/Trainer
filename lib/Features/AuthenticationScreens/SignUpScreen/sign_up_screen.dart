@@ -8,6 +8,7 @@ import 'package:trainer/Services/AuthServices/validator.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 import '../../../UIhelper/colorPalette/color_palette.dart';
 import '../../../UiHelper/utilities/widgets/custom_primary_button.dart';
+import '../../../UiHelper/utilities/widgets/toast_message.dart';
 import '../sharedWidgets/account_login_widget.dart';
 import '../sharedWidgets/auth_title.dart';
 import '../sharedWidgets/custom_text_field.dart';
@@ -125,8 +126,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           btnName: "Continue",
                           onTap: () async {
                             if (passController.text.trim() ==
-                                    confirmPassController.text.trim() &&
-                                _formKey.currentState!.validate()) {
+                                confirmPassController.text.trim()) {
+                              ToastMessage.showToast(
+                                message: "Passwords do not match",
+                                isError: true,
+                              );
+                              return;
+                            }
+                            if (_formKey.currentState!.validate()) {
                               String? userId = await context
                                   .read<DbProvider>()
                                   .createUser(
