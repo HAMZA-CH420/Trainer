@@ -10,11 +10,13 @@ class TrainerAbout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 8,
       children: [
         Text(
           "About Me",
           style: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w600),
         ),
+        Text(about, style: GoogleFonts.poppins(fontSize: 16)),
       ],
     );
   }

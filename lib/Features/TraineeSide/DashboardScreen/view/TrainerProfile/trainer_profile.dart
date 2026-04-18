@@ -38,7 +38,7 @@ class _TrainerProfileState extends State<TrainerProfile> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            spacing: 15,
+            spacing: 20,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
