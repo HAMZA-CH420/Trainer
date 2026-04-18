@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_about.dart';
+import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_personal_info.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
 
 import '../../../../../UIhelper/colorPalette/color_palette.dart';
@@ -34,17 +35,23 @@ class _TrainerProfileState extends State<TrainerProfile> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: TrainerAbout(
-                experience: widget.experience,
-                name: widget.name,
-                specialization: widget.specialization,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            spacing: 15,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: TrainerPersonalInfo(
+                  experience: widget.experience,
+                  name: widget.name,
+                  specialization: widget.specialization,
+                ),
               ),
-            ),
-          ],
+              TrainerAbout(about: widget.about),
+            ],
+          ),
         ),
       ),
     );
