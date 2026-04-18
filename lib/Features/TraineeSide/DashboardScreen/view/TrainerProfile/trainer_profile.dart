@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_about.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_calendar.dart';
+import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_certificates.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/TrainerProfile/widgets/trainer_personal_info.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
 import 'package:trainer/UiHelper/utilities/widgets/custom_primary_button.dart';
@@ -52,6 +53,7 @@ class _TrainerProfileState extends State<TrainerProfile> {
                 ),
               ),
               TrainerAbout(about: widget.about),
+              TrainerCertificates(),
               TrainerCalendar(),
               CustomPrimaryButton(btnName: "Book", onTap: () {}),
             ],
