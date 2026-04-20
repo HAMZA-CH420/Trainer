@@ -8,6 +8,7 @@ import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 
 class TrainerList extends StatefulWidget {
   final String searchQuery;
+
   const TrainerList({super.key, this.searchQuery = ""});
 
   @override
@@ -44,9 +45,9 @@ class _TrainerListState extends State<TrainerList> {
           if (snapshot.hasError) {
             return const Center(child: Text("Error loading trainers"));
           }
-          
+
           final allTrainers = snapshot.data ?? [];
-          
+
           // Filter out current user and apply search query
           final filteredTrainers = allTrainers.where((trainer) {
             final isNotMe = trainer["userId"] != currentUserId;
@@ -58,15 +59,16 @@ class _TrainerListState extends State<TrainerList> {
                 .toString()
                 .toLowerCase()
                 .contains(widget.searchQuery.toLowerCase());
-            
+
             return isNotMe && (nameMatches || specMatches);
           }).toList();
 
+          ///
           if (filteredTrainers.isEmpty) {
             return Center(
               child: Text(
-                widget.searchQuery.isEmpty 
-                    ? "No Trainers Available" 
+                widget.searchQuery.isEmpty
+                    ? "No Trainers Available"
                     : "No results for \"${widget.searchQuery}\"",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.bold,
@@ -84,7 +86,11 @@ class _TrainerListState extends State<TrainerList> {
                 leading: CircleAvatar(
                   radius: 30,
                   backgroundColor: Palette.primaryColor,
-                  child: const Icon(Icons.person, color: Colors.white, size: 22),
+                  child: const Icon(
+                    Icons.person,
+                    color: Colors.white,
+                    size: 22,
+                  ),
                 ),
                 title: Text(
                   trainer["userName"] ?? "Unknown",
