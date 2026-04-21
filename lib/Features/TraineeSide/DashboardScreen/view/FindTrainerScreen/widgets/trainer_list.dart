@@ -63,7 +63,6 @@ class _TrainerListState extends State<TrainerList> {
             return isNotMe && (nameMatches || specMatches);
           }).toList();
 
-          ///
           if (filteredTrainers.isEmpty) {
             return Center(
               child: Text(
