@@ -3,30 +3,44 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 
+import '../../../../../../UIhelper/colorPalette/color_palette.dart';
+
 class DrawerHelperWidget extends StatelessWidget {
-  const DrawerHelperWidget({super.key});
+  const DrawerHelperWidget({
+    super.key,
+    required this.title,
+    required this.onTap,
+  });
+
+  final String title;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.grey.shade200,
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            spacing: 10,
+            children: [
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.grey.shade200,
+                ),
+                child: Icon(CupertinoIcons.chat_bubble_text),
               ),
-              child: Icon(CupertinoIcons.chat_bubble_text),
-            ),
-            Text("Messages", style: GoogleFonts.poppins(fontSize: 18)),
-          ],
-        ),
-      ],
+              Text(title, style: GoogleFonts.poppins(fontSize: 18)),
+            ],
+          ),
+          Icon(Icons.arrow_forward, color: Palette.primaryColor),
+        ],
+      ),
     );
   }
 }
