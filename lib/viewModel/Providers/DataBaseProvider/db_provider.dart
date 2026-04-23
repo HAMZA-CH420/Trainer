@@ -45,6 +45,7 @@ class DbProvider extends ChangeNotifier {
     return userId;
   }
 
+  ///update goals in the database
   void updateGoals({
     required String userId,
     required List<String> goals,
@@ -53,6 +54,7 @@ class DbProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// get all the users that are trainers
   Future<List<Map<String, dynamic>>> getTrainer() async {
     return await _localDataBase.getTrainer();
   }
