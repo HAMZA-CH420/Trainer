@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
 class CustomSearchBar extends StatefulWidget {
-  const CustomSearchBar({super.key, required this.onChanged});
+  const CustomSearchBar({
+    super.key,
+    required this.onChanged,
+    required this.hintTxt,
+  });
 
   final Function(String) onChanged;
+  final String hintTxt;
 
   @override
   State<CustomSearchBar> createState() => _CustomSearchBarState();
@@ -42,7 +47,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         decoration: InputDecoration(
           border: InputBorder.none,
           prefixIcon: Icon(Icons.search, color: Palette.primaryColor, size: 34),
-          hintText: "Search for trainers",
+          hintText: widget.hintTxt,
         ),
       ),
     );

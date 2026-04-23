@@ -30,7 +30,9 @@ class _FindTrainerScreenState extends State<FindTrainerScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const InviteFriendScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => const InviteFriendScreen(),
+                  ),
                 );
               },
             ),
@@ -59,6 +61,7 @@ class _FindTrainerScreenState extends State<FindTrainerScreen> {
             spacing: 20,
             children: [
               CustomSearchBar(
+                hintTxt: "Search for trainers",
                 onChanged: (query) {
                   setState(() {
                     searchQuery = query;

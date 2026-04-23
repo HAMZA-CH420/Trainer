@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/Drawer/widget/drawer_helper_widget.dart';
+import 'package:trainer/Features/TraineeSide/DashboardScreen/view/MessagesScreen/view/message_screen.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 import '../../../../../../UiHelper/colorPalette/color_palette.dart';
 import '../../../../../../UiHelper/utilities/widgets/toast_message.dart';
@@ -63,7 +64,14 @@ class DrawerWidget extends StatelessWidget {
                     spacing: 20,
                     children: [
                       DrawerHelperWidget(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MessageScreen(),
+                            ),
+                          );
+                        },
                         title: "Messages",
                         icon: CupertinoIcons.chat_bubble_text,
                       ),
