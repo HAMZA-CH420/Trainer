@@ -21,6 +21,13 @@ class DbProvider extends ChangeNotifier {
     return false;
   }
 
+  ///method to retrieve current user details
+  Future<Map<String, dynamic>?> getUserDetails() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.getString("userId");
+    return await _localDataBase.getUser(userId: prefs.getString("userId")!);
+  }
+
   ///method to create a user in the database
   Future<String?> createUser({
     required String userName,

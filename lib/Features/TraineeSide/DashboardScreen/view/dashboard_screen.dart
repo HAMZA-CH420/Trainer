@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/Drawer/view/drawer_widget.dart';
 
-import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
-
 import '../widgets/coach_messages_widget.dart';
 import '../widgets/dash_title.dart';
 import '../widgets/progress_widget.dart';
