@@ -14,12 +14,7 @@ class LocalDataBase {
 
   ///check whether if the database is present
   Future<Database> getDb() async {
-    if (db != null) {
-      return db!;
-    } else {
-      db = await openDb();
-      return db!;
-    }
+    return db ??= await openDb();
   }
 
   /// open a new database if there is not one present
@@ -38,14 +33,13 @@ class LocalDataBase {
       },
       onUpgrade: (db, oldVersion, newVersion) async {
         if (oldVersion < 3) {
-          // Drop and recreate to ensure clean schema for development
           await db.execute("DROP TABLE IF EXISTS trainerProfile");
           await db.execute(
             "create table trainerProfile(id integer primary key autoincrement, userName text, userId text, about text, specialization text, experience text, hourlyRate text, rating real)",
           );
         }
       },
-      version: 3, // Increased version to 3
+      version: 3,
     );
   }
 
@@ -70,6 +64,17 @@ class LocalDataBase {
       "type": type,
     });
     return rowsAffected > 0 ? userId : null;
+  }
+
+  ///get current user details
+  Future<Map<String, dynamic>?> getUser({required String userId}) async {
+    final db = await getDb();
+    var results = await db.query(
+      "userList",
+      where: "userId = ?",
+      whereArgs: [userId],
+    );
+    return results.isNotEmpty ? results.first : null;
   }
 
   ///add trainers profile in the table

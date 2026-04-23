@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainer/Features/TraineeSide/DashboardScreen/view/Drawer/view/drawer_widget.dart';
 
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
 
@@ -16,8 +17,8 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerWidget(),
       appBar: AppBar(
-        leading: Icon(Icons.menu, color: Palette.primaryColor),
         title: Text(
           "Dashboard",
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 22),

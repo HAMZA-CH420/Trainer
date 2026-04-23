@@ -5,6 +5,7 @@ import 'package:trainer/DataBase/local/db_helper.dart';
 class DbProvider extends ChangeNotifier {
   final LocalDataBase _localDataBase = LocalDataBase.getInstance();
 
+  ///method to check credentials to login user
   Future<bool> loginUser({
     required String email,
     required String password,
@@ -20,6 +21,7 @@ class DbProvider extends ChangeNotifier {
     return false;
   }
 
+  ///method to create a user in the database
   Future<String?> createUser({
     required String userName,
     required String email,
