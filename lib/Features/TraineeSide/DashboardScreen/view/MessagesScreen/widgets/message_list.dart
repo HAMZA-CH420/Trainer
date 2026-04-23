@@ -22,7 +22,6 @@ class _MessageListState extends State<MessageList> {
 
   @override
   Widget build(BuildContext context) {
-    // Filter the messages based on the search query
     final filteredMessages = messages.where((message) {
       final name = message["name"].toString().toLowerCase();
       final msg = message["msg"].toString().toLowerCase();
@@ -52,10 +51,7 @@ class _MessageListState extends State<MessageList> {
                     message["name"],
                     style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
                   ),
-                  subtitle: Text(
-                    message["msg"],
-                    style: GoogleFonts.poppins(),
-                  ),
+                  subtitle: Text(message["msg"], style: GoogleFonts.poppins()),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
                     color: Palette.primaryColor,
