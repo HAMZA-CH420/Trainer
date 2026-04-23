@@ -8,10 +8,12 @@ class DrawerHelperWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.onTap,
+    required this.icon,
   });
 
   final String title;
   final VoidCallback onTap;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class DrawerHelperWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   color: Colors.grey.shade200,
                 ),
-                child: Icon(CupertinoIcons.chat_bubble_text),
+                child: Icon(icon),
               ),
               Text(title, style: GoogleFonts.poppins(fontSize: 18)),
             ],

@@ -1,9 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/Drawer/widget/drawer_helper_widget.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
 import '../../../../../../UiHelper/colorPalette/color_palette.dart';
+import '../../../../../../UiHelper/utilities/widgets/toast_message.dart';
+import '../../../../../OnboardingScreens/introProvider/intro_screen.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -54,7 +59,45 @@ class DrawerWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  DrawerHelperWidget(onTap: () {}, title: "Messages"),
+                  Column(
+                    spacing: 20,
+                    children: [
+                      DrawerHelperWidget(
+                        onTap: () {},
+                        title: "Messages",
+                        icon: CupertinoIcons.chat_bubble_text,
+                      ),
+                      DrawerHelperWidget(
+                        onTap: () {},
+                        title: "Help/Support",
+                        icon: CupertinoIcons.person,
+                      ),
+                      DrawerHelperWidget(
+                        onTap: () {},
+                        title: "Settings",
+                        icon: CupertinoIcons.settings,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: MediaQuery.sizeOf(context).height / 2.2),
+                  DrawerHelperWidget(
+                    onTap: () async {
+                      final SharedPreferences pref =
+                          await SharedPreferences.getInstance();
+                      pref.setBool("userLogged", false);
+                      ToastMessage.showToast(
+                        message: "Logged out ",
+                        isError: true,
+                      );
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => IntroScreen()),
+                        (route) => false,
+                      );
+                    },
+                    title: "Logout",
+                    icon: Icons.logout,
+                  ),
                 ],
               );
             },
