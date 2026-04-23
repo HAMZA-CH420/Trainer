@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class DrawerHelperWidget extends StatelessWidget {
@@ -6,18 +8,25 @@ class DrawerHelperWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Row(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.grey.shade200,
+    final size = MediaQuery.sizeOf(context);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.grey.shade200,
+              ),
+              child: Icon(CupertinoIcons.chat_bubble_text),
             ),
-            child: HugeIcon(icon: HugeIcons.strokeRoundedMessage01),
-          ),
-        ],
-      ),
+            Text("Messages", style: GoogleFonts.poppins(fontSize: 18)),
+          ],
+        ),
+      ],
     );
   }
 }

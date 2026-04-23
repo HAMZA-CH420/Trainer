@@ -3,45 +3,58 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/Drawer/widget/drawer_helper_widget.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
-
-import '../../../../../../UIhelper/colorPalette/color_palette.dart';
+import '../../../../../../UiHelper/colorPalette/color_palette.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var currentUserData = context.read<DbProvider>().getUserDetails();
     return Drawer(
       elevation: 1.5,
-      shape: BeveledRectangleBorder(),
+      shape: const BeveledRectangleBorder(),
       width: MediaQuery.sizeOf(context).width / 1.3,
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 20,
-            children: [
-              Row(
+          child: FutureBuilder<Map<String, dynamic>?>(
+            future: context.read<DbProvider>().getUserDetails(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              
+              final userData = snapshot.data;
+              final userName = userData?['userName'] ?? "Guest User";
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 20,
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_back, color: Palette.primaryColor),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(Icons.arrow_back, color: Palette.primaryColor),
+                      ),
+                      Expanded(
+                        child: Text(
+                          userName,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.poppins(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "",
-                    style: GoogleFonts.poppins(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  const DrawerHelperWidget(),
                 ],
-              ),
-              DrawerHelperWidget(),
-            ],
+              );
+            },
           ),
         ),
       ),
