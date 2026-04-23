@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hugeicons/hugeicons.dart';
-
 import '../../../../../../UIhelper/colorPalette/color_palette.dart';
 
 class DrawerHelperWidget extends StatelessWidget {
@@ -17,7 +15,6 @@ class DrawerHelperWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     return GestureDetector(
       onTap: onTap,
       child: Row(

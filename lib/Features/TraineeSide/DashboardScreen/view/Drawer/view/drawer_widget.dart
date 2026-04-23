@@ -23,7 +23,7 @@ class DrawerWidget extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
               }
-              
+
               final userData = snapshot.data;
               final userName = userData?['userName'] ?? "Guest User";
 
@@ -37,7 +37,10 @@ class DrawerWidget extends StatelessWidget {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.arrow_back, color: Palette.primaryColor),
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Palette.primaryColor,
+                        ),
                       ),
                       Expanded(
                         child: Text(
@@ -51,7 +54,7 @@ class DrawerWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const DrawerHelperWidget(),
+                  DrawerHelperWidget(onTap: () {}, title: "Messages"),
                 ],
               );
             },
