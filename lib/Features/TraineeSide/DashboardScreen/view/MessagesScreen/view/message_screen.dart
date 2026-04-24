@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/FindTrainerScreen/widgets/custom_search_bar.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/MessagesScreen/widgets/message_list.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
