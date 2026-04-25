@@ -1,13 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
+import 'package:trainer/Features/TraineeSide/WorkoutScreen/view/workout_plan_detail_screen.dart';
 import 'package:trainer/Features/TraineeSide/WorkoutScreen/widgets/today_workout.dart';
 import 'package:trainer/Features/TraineeSide/WorkoutScreen/widgets/workout_plans.dart';
 
 import '../../DashboardScreen/view/Drawer/view/drawer_widget.dart';
 
-class WorkoutScreen extends StatelessWidget {
+class WorkoutScreen extends StatefulWidget {
   const WorkoutScreen({super.key});
+
+  @override
+  State<WorkoutScreen> createState() => _WorkoutScreenState();
+}
+
+class _WorkoutScreenState extends State<WorkoutScreen> {
+  final workouts = [
+    {
+      "name": "Beginner's Strength",
+      "duration": "4 weeks",
+      "image": "workout_image_beginner.png",
+    },
+    {
+      "name": "Cardio Blast",
+      "duration": "2 weeks",
+      "image": "workout_image_cardio.png",
+    },
+    {
+      "name": "Flexibility & mobility",
+      "duration": "1 weeks",
+      "image": "workout_image_flexibility.png",
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +62,23 @@ class WorkoutScreen extends StatelessWidget {
               ),
               Column(
                 spacing: 25,
-                children: [
-                  WorkoutPlans(
-                    onTap: () {},
-                    workoutName: "Beginner's Strength",
-                    workoutDuration: "4 weeks",
-                    image: "workout_image_beginner.png",
-                  ),
-                  WorkoutPlans(
-                    onTap: () {},
-                    workoutName: "Cardio Blast",
-                    workoutDuration: "2 weeks",
-                    image: "workout_image_cardio.png",
-                  ),
-                  WorkoutPlans(
-                    onTap: () {},
-                    workoutName: "Flexibility & mobility",
-                    workoutDuration: "1 weeks",
-                    image: "workout_image_flexibility.png",
-                  ),
-                ],
+                children: List.generate(workouts.length, (index) {
+                  return WorkoutPlans(
+                    workoutName: workouts[index]["name"]!,
+                    workoutDuration: workouts[index]["duration"]!,
+                    image: workouts[index]["image"]!,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WorkoutPlanDetailScreen(
+                            workoutName: workouts[index]["name"]!,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }),
               ),
             ],
           ),
