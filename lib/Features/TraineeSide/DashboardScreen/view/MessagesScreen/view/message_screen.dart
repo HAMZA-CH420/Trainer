@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/FindTrainerScreen/widgets/custom_search_bar.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/MessagesScreen/widgets/message_list.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
-
-import '../../../../../../UIhelper/colorPalette/color_palette.dart';
+import 'package:trainer/UiHelper/utilities/widgets/pop_button.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -20,12 +19,7 @@ class _MessageScreenState extends State<MessageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back, color: Palette.primaryColor),
-        ),
+        leading: PopButton(),
         title: DashTitle(title: "Messages"),
         centerTitle: true,
         bottom: PreferredSize(

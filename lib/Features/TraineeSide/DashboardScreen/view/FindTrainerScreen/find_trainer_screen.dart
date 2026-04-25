@@ -5,7 +5,8 @@ import 'package:trainer/Features/TraineeSide/DashboardScreen/view/FindTrainerScr
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/FindTrainerScreen/widgets/filter_widget.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/FindTrainerScreen/widgets/trainer_list.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/widgets/dash_title.dart';
-import 'package:trainer/UiHelper/colorPalette/color_palette.dart';
+
+import '../../../../../UiHelper/utilities/widgets/pop_button.dart';
 
 class FindTrainerScreen extends StatefulWidget {
   const FindTrainerScreen({super.key});
@@ -45,12 +46,7 @@ class _FindTrainerScreenState extends State<FindTrainerScreen> {
 
   PreferredSizeWidget appBar(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(Icons.arrow_back, color: Palette.primaryColor),
-      ),
+      leading: PopButton(),
       title: DashTitle(title: "Find a Trainer"),
       centerTitle: true,
       bottom: PreferredSize(

@@ -22,6 +22,7 @@ class _MessageListState extends State<MessageList> {
 
   @override
   Widget build(BuildContext context) {
+    // Filter the messages based on the search query
     final filteredMessages = messages.where((message) {
       final name = message["name"].toString().toLowerCase();
       final msg = message["msg"].toString().toLowerCase();
@@ -29,37 +30,40 @@ class _MessageListState extends State<MessageList> {
       return name.contains(query) || msg.contains(query);
     }).toList();
 
-    return Flexible(
-      child: filteredMessages.isEmpty
-          ? Center(
-              child: Text(
-                "No messages found",
-                style: GoogleFonts.poppins(color: Colors.grey),
-              ),
-            )
-          : ListView.builder(
-              itemCount: filteredMessages.length,
-              itemBuilder: (context, index) {
-                final message = filteredMessages[index];
-                return ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Palette.primaryColor,
-                    child: const Icon(Icons.person, color: Colors.white),
-                  ),
-                  title: Text(
-                    message["name"],
-                    style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
-                  ),
-                  subtitle: Text(message["msg"], style: GoogleFonts.poppins()),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Palette.primaryColor,
-                    size: 16,
-                  ),
-                );
-              },
-            ),
+    if (filteredMessages.isEmpty) {
+      return Center(
+        child: Text(
+          "No messages found",
+          style: GoogleFonts.poppins(color: Colors.grey),
+        ),
+      );
+    }
+
+    return ListView.builder(
+      itemCount: filteredMessages.length,
+      itemBuilder: (context, index) {
+        final message = filteredMessages[index];
+        return ListTile(
+          leading: CircleAvatar(
+            radius: 30,
+            backgroundColor: Palette.primaryColor,
+            child: const Icon(Icons.person, color: Colors.white),
+          ),
+          title: Text(
+            message["name"],
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+          ),
+          subtitle: Text(
+            message["msg"],
+            style: GoogleFonts.poppins(),
+          ),
+          trailing: Icon(
+            Icons.arrow_forward_ios,
+            color: Palette.primaryColor,
+            size: 16,
+          ),
+        );
+      },
     );
   }
 }

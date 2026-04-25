@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/FindTrainerScreen/widgets/invite_link_widget.dart';
 
 import 'package:trainer/UIhelper/colorPalette/color_palette.dart';
+import 'package:trainer/UiHelper/utilities/widgets/pop_button.dart';
 
 import '../../widgets/dash_title.dart';
 
@@ -14,12 +15,7 @@ class InviteFriendScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back, color: Palette.primaryColor),
-        ),
+        leading: PopButton(),
         title: DashTitle(title: "Invite People"),
         centerTitle: true,
       ),

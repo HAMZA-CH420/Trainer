@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/Drawer/widget/drawer_helper_widget.dart';
 import 'package:trainer/Features/TraineeSide/DashboardScreen/view/MessagesScreen/view/message_screen.dart';
 import 'package:trainer/UiHelper/utilities/widgets/logout_button.dart';
+import 'package:trainer/UiHelper/utilities/widgets/pop_button.dart';
 import 'package:trainer/viewModel/Providers/DataBaseProvider/db_provider.dart';
-import '../../../../../../UiHelper/colorPalette/color_palette.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -37,15 +37,7 @@ class DrawerWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Palette.primaryColor,
-                        ),
-                      ),
+                      PopButton(),
                       Expanded(
                         child: Text(
                           userName,
