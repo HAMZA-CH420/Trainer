@@ -7,32 +7,37 @@ class WorkoutPlans extends StatelessWidget {
     required this.workoutName,
     required this.workoutDuration,
     required this.image,
+    required this.onTap,
   });
 
   final String workoutName, workoutDuration, image;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            spacing: 10,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                workoutName,
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 17,
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              spacing: 10,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  workoutName,
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 17,
+                  ),
                 ),
-              ),
-              Text(workoutDuration, style: GoogleFonts.poppins(fontSize: 15)),
-            ],
-          ),
-          SizedBox(width: 150, child: Image.asset("assets/images/$image")),
-        ],
+                Text(workoutDuration, style: GoogleFonts.poppins(fontSize: 15)),
+              ],
+            ),
+            SizedBox(width: 150, child: Image.asset("assets/images/$image")),
+          ],
+        ),
       ),
     );
   }

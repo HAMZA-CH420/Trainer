@@ -11,8 +11,8 @@ class LogoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DrawerHelperWidget(
-      onTap: () {
-        dialogBox(context);
+      onTap: () async {
+        await dialogBox(context);
       },
       title: "Logout",
       icon: Icons.logout,
@@ -30,7 +30,7 @@ class LogoutButton extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Text("no"),
+              child: Text("no", style: TextStyle(fontSize: 18)),
             ),
             InkWell(
               onTap: () async {
@@ -44,7 +44,7 @@ class LogoutButton extends StatelessWidget {
                   (route) => false,
                 );
               },
-              child: Text("yes"),
+              child: Text("yes", style: TextStyle(fontSize: 18)),
             ),
           ],
         );

@@ -40,16 +40,19 @@ class WorkoutScreen extends StatelessWidget {
                 spacing: 25,
                 children: [
                   WorkoutPlans(
+                    onTap: () {},
                     workoutName: "Beginner's Strength",
                     workoutDuration: "4 weeks",
                     image: "workout_image_beginner.png",
                   ),
                   WorkoutPlans(
+                    onTap: () {},
                     workoutName: "Cardio Blast",
                     workoutDuration: "2 weeks",
                     image: "workout_image_cardio.png",
                   ),
                   WorkoutPlans(
+                    onTap: () {},
                     workoutName: "Flexibility & mobility",
                     workoutDuration: "1 weeks",
                     image: "workout_image_flexibility.png",
