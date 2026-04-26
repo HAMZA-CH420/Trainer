@@ -10,7 +10,7 @@ class ProgressWidget extends StatefulWidget {
   State<ProgressWidget> createState() => _ProgressWidgetState();
 }
 
-/// thi is a
+/// thi is
 class _ProgressWidgetState extends State<ProgressWidget> {
   final List<String> actions = ["Workouts", "Goals"];
   final List<Color> colors = [Colors.green, Colors.orange];
