@@ -52,7 +52,9 @@ class LocalDataBase {
     required String type,
   }) async {
     String userId =
-        "${userName.toLowerCase().replaceAll(' ', '_')}_${DateTime.now().millisecondsSinceEpoch}";
+        "${userName.toLowerCase().replaceAll(' ', '_')}_${DateTime
+        .now()
+        .millisecondsSinceEpoch}";
 
     var db = await getDb();
     int rowsAffected = await db.insert("userList", {
@@ -66,6 +68,7 @@ class LocalDataBase {
     return rowsAffected > 0 ? userId : null;
   }
 
+  ///
   ///get current user details
   Future<Map<String, dynamic>?> getUser({required String userId}) async {
     final db = await getDb();
