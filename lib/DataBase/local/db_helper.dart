@@ -66,7 +66,7 @@ class LocalDataBase {
     return rowsAffected > 0 ? userId : null;
   }
 
-  /// this is
+  /// this is a
   ///get current user details
   Future<Map<String, dynamic>?> getUser({required String userId}) async {
     final db = await getDb();
