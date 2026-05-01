@@ -77,7 +77,7 @@ class LocalDataBase {
     return results.isNotEmpty ? results.first : null;
   }
 
-  ///this is a
+  ///this is
   ///add trainers profile in the table
   Future<bool?> addTrainerProfile({
     required String userId,
