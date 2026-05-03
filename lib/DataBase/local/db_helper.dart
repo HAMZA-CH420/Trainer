@@ -102,7 +102,7 @@ class LocalDataBase {
     return rowsAffected > 0 ? true : false;
   }
 
-
+  ///this
   ///Retrieve trainers profile from the database
   Future<List<Map<String, dynamic>>> getTrainerProfile() async {
     var db = await getDb();
