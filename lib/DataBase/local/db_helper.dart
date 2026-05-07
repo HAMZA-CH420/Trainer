@@ -18,7 +18,7 @@ class LocalDataBase {
   }
 
   /// this is a comment
-  /// open a new database if there is not one present
+  /// open a new database
   Future<Database> openDb() async {
     Directory appDir = await getApplicationDocumentsDirectory();
     String dirPath = join(appDir.path, "Trainer.db");
