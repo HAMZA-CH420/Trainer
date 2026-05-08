@@ -43,7 +43,6 @@ class LocalDataBase {
     );
   }
 
-  ///this is a comment for git
   ///add a new user in the table
   Future<String?> newUser({
     required String userName,
