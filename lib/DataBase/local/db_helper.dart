@@ -17,7 +17,7 @@ class LocalDataBase {
     return db ??= await openDb();
   }
 
-  /// this is a
+  /// this is a comment
   /// open a new database
   Future<Database> openDb() async {
     Directory appDir = await getApplicationDocumentsDirectory();
