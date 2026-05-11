@@ -43,7 +43,7 @@ class LocalDataBase {
     );
   }
 
-  ///this is an
+  ///this is an and
   ///add a new user in the table
   Future<String?> newUser({
     required String userName,
